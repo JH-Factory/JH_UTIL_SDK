@@ -230,7 +230,7 @@ public void onCreate(Bundle savedInstanceState) {
 
 
 
-#### 광고목록 띄우기 View
+#### 광고 목록 띄우기 View
 
 광고 목록을 현재 화면에 팝업으로 띄우기 위하여 TnkSession.popupAdList() 함수를 사용합니다. 광고목록을 보여주기 위하여 AdListView를 생성하여 현재 화면에 팝업형태로 띄워줍니다.
 
