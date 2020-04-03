@@ -24,7 +24,7 @@
 
    나. [포인트 조회 및 인출](#나-포인트-조회-및-인출)
 
-   * [TnkSession.queryPoint()](#tnksession-querypoint())
+   * [TnkSession.queryPoint()](#tnksessionquerypoint)
 
    다. [그밖의 기능들](#다-그밖의-기능들)
 
@@ -234,7 +234,7 @@ public void onCreate(Bundle savedInstanceState) {
 
 
 
-#### 광고 목록 띄우기 View
+#### 광고 목록 띄우기 (View)
 
 광고 목록을 현재 화면에 팝업으로 띄우기 위하여 TnkSession.popupAdList() 함수를 사용합니다. 광고목록을 보여주기 위하여 AdListView를 생성하여 현재 화면에 팝업형태로 띄워줍니다.
 
