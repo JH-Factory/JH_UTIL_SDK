@@ -19,6 +19,8 @@
    	* [유저 식별 값 설정](#유저-식별-값-설정)
    	* [광고 목록 띄우기 Activity](#광고-목록-띄우기-activity)
    	* [광고 목록 띄우기 View](#광고-목록-띄우기-view)
+   	* [AdListView](#adlistview)
+   	* [Listener 이용하기](#listener-이용하기)
 
    나. [포인트 조회 및 인출](#나-포인트-조회-및-인출)
 
