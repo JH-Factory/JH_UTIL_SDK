@@ -24,7 +24,7 @@
 
    나. [포인트 조회 및 인출](#나-포인트-조회-및-인출)
 
-   * [TnkSession.queryPoint()](#tnksession.querypoint())
+   * [TnkSession.queryPoint()](#tnksession.querypoint)
 
    다. [그밖의 기능들](#다-그밖의-기능들)
 
