@@ -17,16 +17,23 @@
    가. [광고 목록 띄우기](#가-광고-목록-띄우기)
 
    	* [유저 식별 값 설정](#유저-식별-값-설정)
-   	* [광고 목록 띄우기 Activity](#광고-목록-띄우기-activity)
-   	* [광고 목록 띄우기 View](#광고-목록-띄우기-view)
+   	* [광고 목록 띄우기 (Activity)](#광고-목록-띄우기-activity)
+   	* [광고 목록 띄우기 (View)](#광고-목록-띄우기-view)
    	* [AdListView](#adlistview)
    	* [Listener 이용하기](#listener-이용하기)
 
    나. [포인트 조회 및 인출](#나-포인트-조회-및-인출)
 
    * [TnkSession.queryPoint()](#tnksessionquerypoint)
+   * [TnkSession.purchaseItem()](#tnksessionpurchaseitem)
+   * [TnkSession.withdrawPoints()](#tnksessionwithdrawpoints)
+   * [TnkSession.getEarnPoints()](#tnksessiongetearnpoints)
 
    다. [그밖의 기능들](#다-그밖의-기능들)
+
+   * [TnkSession.queryPublishState()](#tnksessionquerypublishstate)
+   * [TnkSession.queryAdvertiseCount()](#tnksessionqueryadvertisecount)
+   * [TnkSession.enableLogging()](#tnksessionenablelogging)
 
    라. [디자인 변경하기](#라-디자인-변경하기)
 
@@ -763,7 +770,7 @@ Tnk 서버에 적립되어 있는 사용자의 모든 포인트를 차감하고 
 
 
 
-#### Return : int
+##### Return : int
 
   - 인출된 포인트 값, 사용자에게 인출할 포인트가 없으면 0이 반환됩니다.
 
@@ -907,166 +914,19 @@ Tnk의 SDK에서 생성하는 로그를 출력할지 여부를 결정합니다. 
 
 광고 리스트 화면(AdListView)는 기본 스타일을 그대로 사용하셔도 충분하지만, 원하시는 경우 매체앱과 통일감 있도록 UI를 변경하실 수 있습니다.
 
-AdListView의 UI를 변경하는 방법은 TnkStyle과 TnkLayout의 2가지 방식을 제공합니다. TnkStyle은 기본 화면 구성에서 벗어나지 않고 배경 이미지나 글자 폰트 크기, 색상 등만 변경하시고자 할 경우에 사용하시면 됩니다. 만약 기본 화면 구성과 완전히 다르게 UI를 배치하고자 하신다면 TnkLayout 기능를 사용하시어 원하는 화면 구성으로 완전히 변경하실 수 있습니다.
+AdListView의 UI를 변경하기 위해서 TemplateLayoutUtils와 TnkLayout 기능을 제공합니다.  TemplateLayoutUtils은 다양한 디자인을 쉽게 사용할 수 있도록 몇가지 디자인을 가지고 있으며 원하시는 디자인을 선택하여 사용하시면 됩니다. 만약 TemplateLayoutUtils에서도 원하는 디자인을 찾을 수 없고 기본 화면 구성과 완전히 다르게 UI를 배치하고자 하신다면 TnkLayout 기능를 사용하시어 원하는 화면 구성으로 완전히 변경하실 수 있습니다.
 
 
 
-#### TnkStyle
-
-TnkStyle 기능은 기본 화면 구성은 유지하면서 화면의 이미지나 폰트 크기, 색상 등 만을 간단히 변경하고자 할 때 사용하실 수 있습니다.
-
-아래의 그림은 광고목록 창의 기본 스타일 화면과 스타일을 다르게 적용한 이미지입니다. 대부분의 구성 요소들을 모두 변경할 수 있습니다.
+#### TemplateLayoutUtils
 
 
-
-![guid_image_01](./img/guide_image_01.png)
-
-
-
-
-
-##### TnkStyle 객체
-
-스타일 변경을 위해서 화면의 구성 요소별로 미리 지정되어 있는 TnkStyle 객체들의 속성 값을 설정합니다. 
-
-TnkStyle 객체에서 공통적으로 제공하는 속성은 다음과 같습니다. 아래의 공통 속성 이외에도 화면의 구성요소에 따라 추가적으로 정의된 속성들이 존재할 수 있습니다.
-
-| 속성명          | 상세설명                                                     |
-| --------------- | ------------------------------------------------------------ |
-| background      | 배경 이미지 (Drawable의 resource ID)                         |
-| backgroundColor | 배경 색상 ARGB 값 (background 지정된 경우에는 사용되지 않음) |
-| textColor       | 글자 색상 ARGB 값                                            |
-| textSize        | 글자 크기 (DIP)                                              |
-
-
-
-##### 광고 리스트 화면 스타일
-
-광고 리스트 화면과 관련된 TnkStyle 객체들은 다음과 같습니다.
-
-| TnkStyle 객체                    | 상세 설명                                                    |
-| -------------------------------- | ------------------------------------------------------------ |
-| TnkStyle.AdWall                  | 광고목록 화면 전체 속성                                      |
-| TnkStyle.AdWall.Header           | 광고목록 상단의 타이틀 영역                                  |
-| TnkStyle.AdWall.Section          | 광고목록 상단 타이틀 아래의 충전소 문구 부분                 |
-| TnkStyle.AdWall.Footer           | 광고목록 하단의 포인트 지급문의 부분                         |
-| TnkStyle.AdWall.Item             | 광고목록 리스트 Item 전체 속성                               |
-| TnkStyle.AdWall.Item.Title       | 광고목록 리스트의 앱 이름 영역                               |
-| TnkStyle.AdWall.Item.Subtitle    | 광고목록 리스트 Item의 앱 이름 하단의 설명 문구 부분         |
-| TnkStyle.AdWall.Item.Tag         | 광고목록 리스트 Item의 오른쪽 Tag 이미지 부분                |
-| TnkStyle.AdWall.Item.Tag.Free    | 무료 광고 Tag                                                |
-| TnkStyle.AdWall.Item.Tag.Paid    | 유료 광고 Tag                                                |
-| TnkStyle.AdWall.Item.Tag.Web     | 웹 이벤트 광고 Tag                                           |
-| TnkStyle.AdWall.Item.Tag.Confirm | 참여 확인 Tag                                                |
-| TnkStyle.AdWall.CloseButton      | 광고리스트 닫기 버튼 (팝업형태로 띄울 경우에 나타나는 X 버튼) |
-
-![guide_image_02](./img/guide_image_02.png)
-
-
-
-추가 설정 항목
-
-- TnkStyle.AdWall.dividerHeight : ListView의 divider 높이 지정 (pixel)
-- TnkStyle.AdWall.dividerColor : ListView의 divider 색상 (ARGB 값)
-- TnkStyle.AdWall.Item.backgroundStrip : 광고리스트 Item의 배경 이미지를 번갈아 다르게 설정하고 싶은 경우 이미지 Drawable의 resource ID를 지정 
-- TnkStyle.AdWall.Item.backgroundColor : 광고리스트 Item의 배경 색상을 번갈아 다르게 설정하고 싶은 경우 ARGB 값을 지정
-
-
-
-##### 상세 화면 스타일
-
-광고를 클릭했을때 나타나는 상세 팝업 창과 관련된 TnkStyle 객체들은 다음과 같습니다.
-
-| TnkStyle 객체                               | 상세 설명                          |
-| ------------------------------------------- | ---------------------------------- |
-| TnkStyle.AdWall.Detail                      | 광고 상세설명 팝업화면의 전체 속성 |
-| TnkStyle.AdWall.Detail.Header               | 팝업 화면의 상단 부분              |
-| TnkStyle.AdWall.Detail.Header.Title         | 상단영역의 앱 이름 부분            |
-| TnkStyle.AdWall.Detail.Header.Subtitle      | 앱 이름 하단의 설명 문구 부분      |
-| TnkStyle.AdWall.Detail.Body                 | 팝업 화면의 본문 영역부분          |
-| TnkStyle.AdWall.Detail.Body.Tag             | 팝업 화면 오른쪽의 Tag 이미지 부분 |
-| TnkStyle.AdWall.Detail.Footer               | 팝업 화면의 하단 부분              |
-| TnkStyle.AdWall.Detail.Footer.ConfirmButton | 하단 이동 버튼                     |
-| TnkStyle.AdWall.Detail.Footer.CancelButton  | 하단 취소 버튼                     |
-
-![guide_image_03](./img/guide_image_03.png)
-
-
-
-##### 적용예시
-
-```java
-private void setTnkStyle() {
-    TnkStyle.clear(); // clear previous style
-
-    TnkStyle.AdWall.backgroundColor = 0xff505050;
-
-    TnkStyle.AdWall.background = R.drawable.contents_title_bg;
-    TnkStyle.AdWall.dividerHeight = 1;
-    TnkStyle.AdWall.CloseButton.background = R.drawable.bt_close;
-
-    TnkStyle.AdWall.Header.background = R.drawable.contents_title_bg;
-    TnkStyle.AdWall.Header.textColor = 0xffffffff;
-    TnkStyle.AdWall.Header.textSize = 22;
-
-    TnkStyle.AdWall.Section.backgroundColor = 0xff505050;
-    TnkStyle.AdWall.Section.textColor = 0xffffffff;
-    TnkStyle.AdWall.Section.textSize = 15;
-
-    TnkStyle.AdWall.Footer.background = R.drawable.contents_title_bg;
-    TnkStyle.AdWall.Footer.textColor = 0xffffffff;
-    TnkStyle.AdWall.Footer.height = 25;
-
-    TnkStyle.AdWall.Item.background = R.drawable.list_item_bg;
-    TnkStyle.AdWall.Item.backgroundStripe = R.drawable.list_item_bg2;
-
-    TnkStyle.AdWall.Item.Title.textColor = 0xff50ff50;
-    TnkStyle.AdWall.Item.Subtitle.textColor = 0xff2c2c7c;
-    TnkStyle.AdWall.Item.Subtitle.textColor = 0xffff871c;
-
-    TnkStyle.AdWall.Item.Tag.Free.background = R.drawable.az_list_bt_free;
-    TnkStyle.AdWall.Item.Tag.Free.textColor = 0xffffffff;
-    TnkStyle.AdWall.Item.Tag.Paid.background = R.drawable.az_list_bt_pay;
-    TnkStyle.AdWall.Item.Tag.Paid.textColor = 0xffffffff;
-    TnkStyle.AdWall.Item.Tag.Web.background = R.drawable.az_list_bt_web;
-    TnkStyle.AdWall.Item.Tag.Web.textColor = 0xffffffff;
-    TnkStyle.AdWall.Item.Tag.Confirm.background = R.drawable.az_list_bt_install;
-    TnkStyle.AdWall.Item.Tag.Confirm.textColor = 0xffffffff;
-
-    TnkStyle.AdWall.Detail.Header.background = R.drawable.contents_title_bg;
-    TnkStyle.AdWall.Detail.Header.Title.textColor = 0xffffffff;
-    TnkStyle.AdWall.Detail.Header.Subtitle.textColor = 0xff000000;
-      
-    TnkStyle.AdWall.Detail.Footer.background = R.drawable.contents_title_bg;
-    TnkStyle.AdWall.Detail.Footer.ConfirmButton.background = R.drawable.btn_top_navi;
-    TnkStyle.AdWall.Detail.Footer.ConfirmButton.textColor = 0xffff5050;
-    TnkStyle.AdWall.Detail.Footer.CancelButton.background = R.drawable.btn_top_navi;
-
-    TnkStyle.AdWall.Detail.Body.backgroundColor = 0xffff871c;
-    TnkStyle.AdWall.Detail.Body.textColor = 0xffffffff;
-
-    TnkStyle.AdWall.Detail.Body.Tag.Free.background = R.drawable.az_list_bt_free;
-    TnkStyle.AdWall.Detail.Body.Tag.Free.textColor = 0xffffffff;
-    TnkStyle.AdWall.Detail.Body.Tag.Paid.background = R.drawable.az_list_bt_pay;
-    TnkStyle.AdWall.Detail.Body.Tag.Paid.textColor = 0xffffffff;
-    TnkStyle.AdWall.Detail.Body.Tag.Web.background = R.drawable.az_list_bt_web;
-    TnkStyle.AdWall.Detail.Body.Tag.Web.textColor = 0xffffffff;
-    TnkStyle.AdWall.Detail.Body.Tag.Confirm.background = R.drawable.az_list_bt_install;
-    TnkStyle.AdWall.Detail.Body.Tag.Confirm.textColor = 0xffffffff;
- }
-
-// 광고 목록 띄우기 전에 스타일 설정한다.
-setTnkStyle();
-TnkSession.showAdList(MainActivity.this, getResources().getString(R.string.tnk_title));
-```
 
 
 
 #### TnkLayout
 
-TnkStyle 기능을 사용하면 기본 구성화면의 이미지나 색상들을 손쉽게 변경할 수 있으나, 화면의 배치 자체를 바꿀 수는 없습니다.
-
-만약 화면 구성 자체를 변경하기를 원한다면 TnkLayout 기능을 사용하셔야합니다.
+TnkLayout 기능을 사용하면 화면 구성 자체를 원하는 UI로 변경이 가능합니다.
 
 아래 화면은 기본 화면을 TnkLayout을 사용하여 변경한 예시입니다.
 
