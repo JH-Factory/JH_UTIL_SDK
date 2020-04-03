@@ -4,21 +4,19 @@
 
 1. [SDK 설정하기](#1-sdk-설정하기)
 
-   1) [라이브러리 등록](#라이브러리-등록) 
+   * [라이브러리 등록](#라이브러리-등록) 
 
-   2) [Manifest 설정하기](#manifest-설정하기)
+   * [Manifest 설정하기](#manifest-설정하기)
 
-   3) [Proguard 사용](#proguard-사용)
+   * [Proguard 사용](#proguard-사용)
 
-   4) [동영상 광고 설정](#동영상-광고-설정)
+   * [동영상 광고 설정](#동영상-광고-설정)
 
-   5) [COPPA 설정 예시](#coppa-설정-예시)
+   * [COPPA 설정 예시](#coppa-설정-예시)
 
 2. [Publisher API](#2-publisher-api)
 
    가. [광고 목록 띄우기](#광고-목록-띄우기)
-
-3. []
 
 
 
