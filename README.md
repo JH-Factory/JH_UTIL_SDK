@@ -1,9 +1,5 @@
 # Tnkfactory SDK Rwd
 
-[TOC]
-
-
-
 ## 목차
 
 1. [SDK 설정하기](#1-sdk-설정하기)
@@ -18,7 +14,13 @@
 
 2. [Publisher API](#2-publisher-api)
 
-   가. [광고 목록 띄우기](#광고-목록-띄우기)
+   가. [광고 목록 띄우기](#가-광고-목록-띄우기)
+
+   나. [포인트 조회 및 인출](#나-포인트-조회-및-인출)
+
+   다. [그밖의 기능들](#다-그밖의-기능들)
+
+   라. [디자인 변경하기](#라-디자인-변경하기)
 
 
 
@@ -116,8 +118,6 @@ TnkSession.setCOPPA(MainActivity.this, false); // OFF
 
 
 
-
-
 ## 2. Publisher API
 
 게시앱(Publisher)을 위한 가이드입니다.
@@ -136,17 +136,13 @@ Tnk의 SDK를 적용하여 게시앱을 구현하는 것은 크게 3단계로 �
 
 
 
-
-
 ### 가. 광고 목록 띄우기
 
 <u>테스트 상태에서는 테스트하는 장비를 개발 장비로 등록하셔야 광고목록이 정상적으로 나타납니다.</u>
 
 
 
-
-
-#### 1) 유저 식별 값 설정
+#### 유저 식별 값 설정
 
 앱이 실행되면 우선 앱 내에서 사용자를 식별하는 고유한 ID를 아래의 API를 사용하시어 Tnk SDK에 설정하시기 바랍니다. 
 
@@ -171,9 +167,7 @@ Tnk의 SDK를 적용하여 게시앱을 구현하는 것은 크게 3단계로 �
 
 
 
-
-
-#### 2) 광고 목록 띄우기 (Activity)
+#### 광고 목록 띄우기 (Activity)
 
 자신의 앱에서 광고 목록을 띄우기 위하여 TnkSession.showAdList() 함수를 사용합니다. 광고목록을 보여주기 위하여 새로운 Activity를 띄웁니다.
 
@@ -232,9 +226,7 @@ public void onCreate(Bundle savedInstanceState) {
 
 
 
-
-
-#### 3) 광고목록 띄우기 (View)
+#### 광고목록 띄우기 (View)
 
 광고 목록을 현재 화면에 팝업으로 띄우기 위하여 TnkSession.popupAdList() 함수를 사용합니다. 광고목록을 보여주기 위하여 AdListView를 생성하여 현재 화면에 팝업형태로 띄워줍니다.
 
@@ -298,9 +290,7 @@ public void onCreate(Bundle savedInstanceState) {
 
 
 
-
-
-#### 4) AdListView
+#### AdListView
 
 AdListView는 보상형 광고목록을 제공하는 View 객체입니다. 개발자는 createAdListView() 메소드를 사용하여 AdListView 객체를 생성할 수 있습니다.
 
@@ -428,9 +418,7 @@ adlistView.loadAdList();
 
 
 
-
-
-#### 5) Listener 이용하기
+#### Listener 이용하기
 
 AdListView를 팝업화면으로 화면에 띄울 경우 화면이 나타나는 시점과 화면이 닫히는 시점을 알고 싶을 때 아래의 TnkAdListener 인터페이스를 사용합니다.
 
@@ -484,8 +472,6 @@ AdListView와 관련되어 TnkAdListener에서 발생하는 이벤트의 내용�
 
 
 
-
-
 ### 나. 포인트 조회 및 인출
 
 사용자가 광고참여를 통하여 획득한 포인트는 Tnk서버에서 관리되거나 앱의 자체서버에서 관리될 수 있습니다.
@@ -494,9 +480,7 @@ AdListView와 관련되어 TnkAdListener에서 발생하는 이벤트의 내용�
 
 
 
-
-
-#### 1) TnkSession.queryPoint()
+#### TnkSession.queryPoint()
 
 Tnk서버에 적립되어 있는 사용자 포인트 값을 조회합니다. 
 
@@ -601,9 +585,7 @@ static public void getPoint() {
 
 
 
-
-
-#### 2) TnkSession.purchaseItem()
+#### TnkSession.purchaseItem()
 
 TnK 서버에서는 별도로 아이템 목록을 관리하는 기능을 제공하지는 않습니다. 
 다만 게시앱에서 제공하는 아이템을 사용자가 구매할 때 Tnk 서버에 해당 포인트 만큼을 차감 할 수 있습니다. 이 API 역시 비동기 방식과 동기 방식을 모두 제공합니다.
@@ -695,9 +677,7 @@ Tnk 서버에 적립되어 있는 사용자 포인트를 차감하고 그 결과
 
 
 
-
-
-#### 3) TnkSession.withdrawPoints()
+#### TnkSession.withdrawPoints()
 
 Tnk 서버에서 관리되는 사용자 포인트 전체를 한번에 인출하는 기능입니다.
 
@@ -781,9 +761,7 @@ Tnk 서버에 적립되어 있는 사용자의 모든 포인트를 차감하고 
 
 
 
-
-
-#### 4) TnkSession.getEarnPoints()
+#### TnkSession.getEarnPoints()
 
 Tnk서버에서 사용자가 참여 가능한 모든 광고의 적립 가능한 총 포인트 값을 조회합니다. 
 동기 방식을 제공하고 있으며 별도 Thread를 생성하여 호출하셔야 합니다.
@@ -835,9 +813,7 @@ static public void getEarnPoint() {
 
 ### 다. 그밖의 기능들
 
-
-
-#### 1) TnkSession.queryPublishState()
+#### TnkSession.queryPublishState()
 
 Tnk 사이트의 [게시정보]에서 광고 게시 중지를 하게 되면 이후에는 사용자가 광고 목록 창을 띄워도 광고들이 나타나지 않습니다.
 그러므로 향후 광고 게시를 중지할 경우를 대비하여 화면에 충전소 버튼 자체를 보이지 않게 하는 기능을 갖추는 것이 바람직합니다.
@@ -884,9 +860,7 @@ TnkSession.queryPublishState(this, false, new ServiceCallback() {
 
 
 
-
-
-#### 2) TnkSession.queryAdvertiseCount()
+#### TnkSession.queryAdvertiseCount()
 
 광고 게시 상태를 확인하여 충전소 버튼을 보이게하거나 안보이게 하는 것으로도 좋지만 실제적으로 현재 적립 가능한 광고가 있는지 여부를 판단해서 버튼을 노출하는 것이 보다 바람직합니다.
 이를 위하여 현재 적립가능한 광고 정보를 확인하는 기능을 아래와 같이 제공합니다.
@@ -909,9 +883,7 @@ TnkSession.queryPublishState(this, false, new ServiceCallback() {
 
 
 
-
-
-### 3) TnkSession.enableLogging()
+### TnkSession.enableLogging()
 
 Tnk의 SDK에서 생성하는 로그를 출력할지 여부를 결정합니다. 테스트 시에는 true로 설정하시고 Release 빌드시에는 false로 설정해주시기 바랍니다.
 
@@ -923,8 +895,6 @@ Tnk의 SDK에서 생성하는 로그를 출력할지 여부를 결정합니다. 
 
 
 
-
-
 ### 라. 디자인 변경하기
 
 광고 리스트 화면(AdListView)는 기본 스타일을 그대로 사용하셔도 충분하지만, 원하시는 경우 매체앱과 통일감 있도록 UI를 변경하실 수 있습니다.
@@ -933,7 +903,7 @@ AdListView의 UI를 변경하는 방법은 TnkStyle과 TnkLayout의 2가지 방�
 
 
 
-#### 1) TnkStyle
+#### TnkStyle
 
 TnkStyle 기능은 기본 화면 구성은 유지하면서 화면의 이미지나 폰트 크기, 색상 등 만을 간단히 변경하고자 할 때 사용하실 수 있습니다.
 
@@ -947,7 +917,7 @@ TnkStyle 기능은 기본 화면 구성은 유지하면서 화면의 이미지�
 
 
 
-##### 가) TnkStyle 객체
+##### TnkStyle 객체
 
 스타일 변경을 위해서 화면의 구성 요소별로 미리 지정되어 있는 TnkStyle 객체들의 속성 값을 설정합니다. 
 
@@ -962,7 +932,7 @@ TnkStyle 객체에서 공통적으로 제공하는 속성은 다음과 같습니
 
 
 
-##### 나) 광고 리스트 화면 스타일
+##### 광고 리스트 화면 스타일
 
 광고 리스트 화면과 관련된 TnkStyle 객체들은 다음과 같습니다.
 
@@ -995,7 +965,7 @@ TnkStyle 객체에서 공통적으로 제공하는 속성은 다음과 같습니
 
 
 
-##### 다) 상세 화면 스타일
+##### 상세 화면 스타일
 
 광고를 클릭했을때 나타나는 상세 팝업 창과 관련된 TnkStyle 객체들은 다음과 같습니다.
 
@@ -1015,7 +985,7 @@ TnkStyle 객체에서 공통적으로 제공하는 속성은 다음과 같습니
 
 
 
-##### 라) 적용예시
+##### 적용예시
 
 ```java
 private void setTnkStyle() {
@@ -1084,9 +1054,7 @@ TnkSession.showAdList(MainActivity.this, getResources().getString(R.string.tnk_t
 
 
 
-
-
-#### 2) TnkLayout
+#### TnkLayout
 
 TnkStyle 기능을 사용하면 기본 구성화면의 이미지나 색상들을 손쉽게 변경할 수 있으나, 화면의 배치 자체를 바꿀 수는 없습니다.
 
@@ -1106,7 +1074,7 @@ TnkLayout을 적용하기 위한 단계는 다음과 같습니다.
 
 
 
-##### 가) TnkLayout 객체
+##### TnkLayout 객체
 
 TnkLayout 객체를 생성하시고 아래의 속성값을 지정합니다. 모든 속성을 지정할 필요는 없습니다.
 
@@ -1177,7 +1145,7 @@ TnkLayout 객체를 생성하시고 아래의 속성값을 지정합니다. 모�
 
 
 
-##### 나) 적용 예시 (1)
+##### 적용 예시 (1)
 
 광고 목록 화면 Layout XML 작성
 
@@ -1474,7 +1442,7 @@ TnkSession.popupAdList(MainActivity.this,"Your title here", null, layout);
 
 
 
-##### 다) 적용 예시
+##### 적용 예시
 
 광고 목록 화면 Layout XML 작성
 
@@ -1698,7 +1666,7 @@ TnkSession.showAdList(MainActivity.this, "Your title here", layout);
 
 
 
-#### 3) 기본 피드형 스타일 ㅇㅇㅇ
+#### 기본 피드형 스타일
 
 피드형 스타일 사용 설정 예시
 
