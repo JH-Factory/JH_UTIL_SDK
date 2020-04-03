@@ -175,7 +175,7 @@ Tnk의 SDK를 적용하여 게시앱을 구현하는 것은 크게 3단계로 �
 
 
 
-#### 광고 목록 띄우기 Activity
+#### 광고 목록 띄우기 (Activity)
 
 자신의 앱에서 광고 목록을 띄우기 위하여 TnkSession.showAdList() 함수를 사용합니다. 광고목록을 보여주기 위하여 새로운 Activity를 띄웁니다.
 
