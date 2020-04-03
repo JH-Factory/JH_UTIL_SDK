@@ -37,9 +37,8 @@
 
    라. [디자인 변경하기](#라-디자인-변경하기)
 
-
-
-
+   * [TemplateLayoutUtils](#templatelayoututils)
+   * 
 
 
 
@@ -918,9 +917,46 @@ AdListView의 UI를 변경하기 위해서 TemplateLayoutUtils와 TnkLayout 기�
 
 
 
-#### TemplateLayoutUtils
+#### 템플릿 디자인 제공
+
+SDK는 템플릿 디자인 16가지를 내장하고 있습니다. 내장되어 있는 디자인은 TemplateLayoutUtils을 통해 사용이 가능합니다.
+
+```java
+// Blue Style 
+TemplateLayoutUtils.getBlueStyle_01(); // IconItem : Basic Square / FeedItem : Square
+TemplateLayoutUtils.getBlueStyle_02(); // IconItem : Basic Square / FeedItem : Button
+TemplateLayoutUtils.getBlueStyle_03(); // IconItem : Basic Ellipse / FeedItem : Square
+TemplateLayoutUtils.getBlueStyle_04(); // IconItem : Basic Ellipse / FeedItem : Button
+TemplateLayoutUtils.getBlueStyle_05(); // IconItem : Tall Square / FeedItem : Square
+TemplateLayoutUtils.getBlueStyle_06(); // IconItem : Tall Square / FeedItem : Button
+TemplateLayoutUtils.getBlueStyle_07(); // IconItem : Tall Ellipse / FeedItem : Square
+TemplateLayoutUtils.getBlueStyle_08(); // IconItem : Tall Ellipse / FeedItem : Button
+
+// Red Style
+TemplateLayoutUtils.getRedStyle_01(); // IconItem : Basic Square / FeedItem : Square
+TemplateLayoutUtils.getRedStyle_02(); // IconItem : Basic Square / FeedItem : Button
+TemplateLayoutUtils.getRedStyle_03(); // IconItem : Basic Ellipse / FeedItem : Square
+TemplateLayoutUtils.getRedStyle_04(); // IconItem : Basic Ellipse / FeedItem : Button
+TemplateLayoutUtils.getRedStyle_05(); // IconItem : Tall Square / FeedItem : Square
+TemplateLayoutUtils.getRedStyle_06(); // IconItem : Tall Square / FeedItem : Button
+TemplateLayoutUtils.getRedStyle_07(); // IconItem : Tall Ellipse / FeedItem : Square
+TemplateLayoutUtils.getRedStyle_08(); // IconItem : Tall Ellipse / FeedItem : Button
+
+```
 
 
+
+##### 사용방법
+
+```java
+// 광고 목록 (Activity)
+TnkSession.showAdList(this, "Title", TemplateLayoutUtils.getBlueStyle_01());
+
+// 광고 목록 (View)
+TnkSession.popupAdList(this, "Title", null, TemplateLayoutUtils.getBlueStyle_01());
+
+// 광
+```
 
 
 
