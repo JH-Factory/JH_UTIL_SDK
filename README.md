@@ -1,5 +1,9 @@
 # Tnkfactory SDK Rwd
 
+[TOC]
+
+
+
 ## 목차
 
 1. [SDK 설정하기](#1-sdk-설정하기)
@@ -10,9 +14,7 @@
 
    * [Proguard 사용](#proguard-사용)
 
-   * [동영상 광고 설정](#동영상-광고-설정)
-
-   * [COPPA 설정 예시](#coppa-설정-예시)
+   * [COPPA 설정](#coppa-설정)
 
 2. [Publisher API](#2-publisher-api)
 
@@ -40,8 +42,6 @@ dependencies {
 
 
 
-
-
 ### Manifest 설정하기
 
 #### Application ID 설정하기
@@ -62,10 +62,16 @@ Tnk 사이트에서 앱 등록하면 상단에 App ID 가 나타납니다. 이�
 
 
 
-#### uses-permission tag 설정하기
+#### 권한 설정
 
 ```xml
 <uses-permission android:name="android.permission.INTERNET" />
+```
+
+동영상 광고 적용 시 **ACCESS_WIFI_STATE** 권한은 필수 설정 권한입니다.
+
+```xml
+<uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
 ```
 
 
@@ -87,8 +93,6 @@ Tnk 사이트에서 앱 등록하면 상단에 App ID 가 나타납니다. 이�
 
 
 
-
-
 ### Proguard 사용
 
 Proguard를 사용하실 경우 Proguard 설정내에 아래 내용을 반드시 넣어주세요.
@@ -99,26 +103,13 @@ Proguard를 사용하실 경우 Proguard 설정내에 아래 내용을 반드시
 
 
 
-
-
-### 동영상 광고 설정
-
-동영상 광고 적용 시 ACCESS_WIFI_STATE 권한은 필수 설정 권한입니다.
-
-```xml
-<uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
-```
-
-
-
-
-
-### COPPA 설정 예시
+### COPPA 설정
 
 COPPA는 [미국 어린이 온라인 개인정보 보호법](https://www.ftc.gov/tips-advice/business-center/privacy-and-security/children's-privacy) 및 관련 법규입니다. 구글 에서는 앱이 13세 미만의 아동을 대상으로 서비스한다면 관련 법률을 준수하도록 하고 있습니다. 연령에 맞는 광고가 보일 수 있도록 아래의 옵션을 설정하시기 바랍니다.
 
 ```java
-TnkSession.setCOPPA(MainActivity.this, true);
+TnkSession.setCOPPA(MainActivity.this, true); // ON - 13세 미안 아동을 대상으로 한 서비스 일경우 사용
+TnkSession.setCOPPA(MainActivity.this, false); // OFF
 ```
 
 
@@ -1707,7 +1698,7 @@ TnkSession.showAdList(MainActivity.this, "Your title here", layout);
 
 
 
-#### 3) 기본 피드형 스타일
+#### 3) 기본 피드형 스타일 ㅇㅇㅇ
 
 피드형 스타일 사용 설정 예시
 
