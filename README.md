@@ -966,9 +966,63 @@ TnkSession.popupAdList(this, "Title", null, TemplateLayoutUtils.getBlueStyle_01(
 
 ![BlueStyle_01](./img/BlueStyle_01.png)
 
+###### BlueStyle_02
+
+![BlueStyle_02](./img/BlueStyle_02.png)
+
+###### BlueStyle_03
+
+![BlueStyle_03](./img/BlueStyle_03.png)
+
+###### BlueStyle_04
+
+![BlueStyle_04](./img/BlueStyle_04.png)
+
+###### BlueStyle_05
+
+![BlueStyle_05](./img/BlueStyle_05.png)
+
+###### BlueStyle_06
+
+![BlueStyle_06](./img/BlueStyle_06.png)
+
+###### BlueStyle_07
+
+![BlueStyle_07](./img/BlueStyle_07.png)
+
+###### BlueStyle_08
+
+![BlueStyle_08](./img/BlueStyle_08.png)
 
 
 
+###### RedStyle_01
+
+![RedStyle_01](./img/RedStyle_01.png)
+
+###### RedStyle_02
+
+![RedStyle_02](./img/RedStyle_02.png)
+
+###### RedStyle_03
+
+![RedStyle_03](./img/RedStyle_03.png)
+
+###### RedStyle_04
+
+![RedStyle_04](./img/RedStyle_04.png)
+###### RedStyle_05
+
+![RedStyle_05](./img/RedStyle_05.png)
+###### RedStyle_06
+
+![RedStyle_06](./img/RedStyle_06.png)
+###### RedStyle_07
+
+![RedStyle_07](./img/RedStyle_07.png)
+###### RedStyle_08
+
+![RedStyle_08](./img/RedStyle_08.png)
 
 
 
