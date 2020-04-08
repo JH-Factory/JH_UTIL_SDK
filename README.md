@@ -8,23 +8,34 @@
 2. [전면 광고 (Interstitial Ad)](#2-전면-광고-interstitial-ad)
    * [전면 광고 객체 생성](#전면-광고-객체-생성)
    * [전면 광고 띄우기](#전면-광고-띄우기)
+     * [광고 로드 후 바로 노출](#광고-로드-후-바로-노출)
+     * [광고 로드 후 일정시간 후에 노출](#광고-로드-후-일정시간-후에-노출)
    * [종료 시 전면 광고 사용 방법](#종료-시-전면-광고-사용-방법)
 3. [배너 광고 (Banner Ad)](#3-배너-광고-banner-ad)
    * [XML 뷰 삽입 방식](#xml-뷰-삽입-방식)
+     * [배너 뷰 생성](#배너-뷰-생성)
+     * [배너 광고 로드](#배너-광고-로드)
    * [뷰 동적 생성 방식](#뷰-동적-생성-방식)
+     * [부모 레이아웃 생성](#부모-레이아웃-생성)
+     * [배너 광고 로드](#배너-광고-로드-1)
 4. [피드형 광고 (Feed Ad)](#4-피드형-광고-feed-ad)
    * [XML 뷰 삽입 방식](#xml-뷰-삽입-방식-1)
+     * [피드 뷰 생성](#피드-뷰-생성)
+     * [피드 광고 로드](#피드-광고-로드)
    * [뷰 동적 생성 방식](#뷰-동적-생성-방식-1)
+     * [부모 레이아웃 생성](#부모-레이아웃-생성-1)
+     * [피드 광고 로드](#피드-광고-로드-1)
 5. [네이티브 광고 (Native Ad)](#5-네이티브-광고-native-ad)
-   * [레이아웃 생성 (native_ad_item.xml)](#레이아웃-생성-native_ad_itemxml)
-   * [네이티브 광고 로드](#네이티브-광고-로드)
-   * [네이티브 광고 노출](#네이티브-광고-노출)
+   * [레이아웃 생성](#레이아웃-생성)
+   * [네이티브 객체 생성](#네이티브-객체-생성)
+   * [네이티브 광고 띄우기](#네이티브-광고-노출)
+     * [광고 로드 후 바로 노출](#광고-로드-후-바로-노출-1)
+     * [광고 로드 후 일정시간 후에 노출](#광고-로드-후-일정시간-후에-노출-1)
 6. [동영상 광고 (Video Ad)](#6-동영상-광고-video-ad)
-   * [전면 광고 로드](#전면-광고-로드)
-   * [전면 광고 노출](#전면-광고-노출)
    * [리워드 동영상 광고 적립 여부 확인](#리워드-동영상-광고-적립-여부-확인)
 7. [AdListener 사용 방법](#7-adlistener-사용-방법)
 8. [미디에이션 (Mediation)](#8-미디에이션-mediation)
+   * [맞춤 이벤트 추가 예시](#맞춤-이벤트-추가-예시)
 9. [구 SDK에서 마이그레이션 하기](./MIGRATION.md)
 
 ## 1. SDK 설정하기
@@ -35,7 +46,7 @@
 
 ```gradle
 dependencies {
-    implementation 'com.tnkfactory.ad:pub:x.y.z'
+    implementation 'com.tnkfactory.ad:pub:7.1.2'
 }
 ```
 
@@ -247,6 +258,11 @@ interstitialAdItem.setListener(new AdListener() {
 
 #### 배너 광고 로드
 
+SDK 클래스들을 import 해주세요.
+```java
+import com.tnkfactory.ad.*;
+```
+
 XML에 삽입된 배너 뷰에 아래와 같이 광고를 로드합니다.
 
 ```java
@@ -288,6 +304,11 @@ public class MainActivity extends AppCompatActivity {
 ```
 
 #### 배너 광고 로드
+
+SDK 클래스들을 import 해주세요.
+```java
+import com.tnkfactory.ad.*;
+```
 
 아래와 같이 Placement ID를 입력하여 배너 뷰 생성 후 배너 광고를 로드해줍니다.
 
@@ -344,6 +365,11 @@ public class MainActivity extends AppCompatActivity {
 
 #### 피드 광고 로드
 
+SDK 클래스들을 import 해주세요.
+```java
+import com.tnkfactory.ad.*;
+```
+
 XML에 삽입된 피드 뷰에 아래와 같이 광고를 로드합니다.
 
 ```java
@@ -382,6 +408,11 @@ public class MainActivity extends AppCompatActivity {
 ```
 
 #### 피드 광고 로드
+
+SDK 클래스들을 import 해주세요.
+```java
+import com.tnkfactory.ad.*;
+```
 
 아래와 같이 Placement ID를 입력하여 피드 뷰 생성 후 배너 광고를 로드해줍니다.
 
@@ -483,6 +514,11 @@ public class MainActivity extends AppCompatActivity {
 ```
 
 ### 네이티브 객체 생성
+
+SDK 클래스들을 import 해주세요.
+```java
+import com.tnkfactory.ad.*;
+```
 
 ```java
 @Override
