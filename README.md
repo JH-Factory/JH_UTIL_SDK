@@ -450,67 +450,75 @@ public class MainActivity extends AppCompatActivity {
 아래 레이아웃은 예시이며 실제로 사용시 원하시는 구조로 만드시면 됩니다.
 
 ```xml
-<RelativeLayout
+<LinearLayout
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:tools="http://schemas.android.com/tools"
 	android:layout_width="match_parent"
 	android:layout_height="wrap_content"
-	android:padding="6dp"
-	android:background="#DDDDDD">
-
-	<RelativeLayout
-		android:id="@+id/native_ad_image_layout"
-		android:layout_width="match_parent"
-		android:layout_height="wrap_content">
-
-		<FrameLayout
-			android:id="@+id/native_ad_content"
-			android:layout_width="match_parent"
-			android:layout_height="wrap_content"/>
-
-		<ImageView
-			android:id="@+id/native_ad_watermark_container"
-			android:layout_width="wrap_content"
-			android:layout_height="wrap_content"
-			android:layout_alignParentRight="true"/>
-	</RelativeLayout>
-
+	android:gravity="center">
+	
 	<RelativeLayout
 		android:layout_width="match_parent"
 		android:layout_height="wrap_content"
-		android:layout_marginTop="10dp"
-		android:layout_below="@+id/native_ad_image_layout">
+		android:padding="6dp"
+		android:background="#DDDDDD">
 
-		<ImageView
-			android:id="@+id/native_ad_icon"
-			android:layout_width="72dp"
-			android:layout_height="72dp"
-			android:layout_alignParentTop="true"
-			android:layout_alignParentLeft="true"
-			android:padding="4dp"
-			android:scaleType="fitXY"/>
-		<TextView
-			android:id="@+id/native_ad_title"
+		<RelativeLayout
+			android:id="@+id/native_ad_image_layout"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content">
+
+			<FrameLayout
+				android:id="@+id/native_ad_content"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"/>
+
+			<ImageView
+				android:id="@+id/native_ad_watermark_container"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:layout_alignParentRight="true"/>
+		</RelativeLayout>
+
+		<RelativeLayout
 			android:layout_width="match_parent"
 			android:layout_height="wrap_content"
-			android:layout_toRightOf="@id/native_ad_icon"
-			android:layout_alignParentTop="true"
-			android:layout_marginTop="3dp"
-			android:layout_marginLeft="8dp"
-			android:gravity="center_vertical"
-			android:textColor="#ff020202"
-			android:textSize="17sp"/>
-		<TextView
-			android:id="@+id/native_ad_desc"
-			android:layout_width="match_parent"
-			android:layout_height="wrap_content"
-			android:layout_toRightOf="@id/native_ad_icon"
-			android:layout_below="@id/native_ad_title"
-			android:layout_marginLeft="8dp"
-			android:layout_marginTop="8dp"
-			android:gravity="center_vertical"
-			android:textColor="#ff179dce"
-			android:textSize="13sp"/>
+			android:layout_marginTop="10dp"
+			android:layout_below="@+id/native_ad_image_layout">
+
+			<ImageView
+				android:id="@+id/native_ad_icon"
+				android:layout_width="72dp"
+				android:layout_height="72dp"
+				android:layout_alignParentTop="true"
+				android:layout_alignParentLeft="true"
+				android:padding="4dp"
+				android:scaleType="fitXY"/>
+			<TextView
+				android:id="@+id/native_ad_title"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:layout_toRightOf="@id/native_ad_icon"
+				android:layout_alignParentTop="true"
+				android:layout_marginTop="3dp"
+				android:layout_marginLeft="8dp"
+				android:gravity="center_vertical"
+				android:textColor="#ff020202"
+				android:textSize="17sp"/>
+			<TextView
+				android:id="@+id/native_ad_desc"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:layout_toRightOf="@id/native_ad_icon"
+				android:layout_below="@id/native_ad_title"
+				android:layout_marginLeft="8dp"
+				android:layout_marginTop="8dp"
+				android:gravity="center_vertical"
+				android:textColor="#ff179dce"
+				android:textSize="13sp"/>
+		</RelativeLayout>
 	</RelativeLayout>
-</RelativeLayout>
+</LinearLayout>
 ```
 
 ### 네이티브 객체 생성
