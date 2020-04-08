@@ -107,9 +107,13 @@ Test Flight 에서는 별도로 계정등록을 하지않아도 간단히 테스
 
 ```xml
 <application
-        ...>
-        
-    <meta-data android:name="tnk_pub_id" android:value="YOUR-INVENTORY-ID-HERE" />
+   ...
+   >
+      ...
+
+        <meta-data android:name="tnk_pub_id" android:value="YOUR-INVENTORY-ID-HERE" />
+
+      ...
 </application>
 ```
 
@@ -124,52 +128,63 @@ SDK 클래스들을 import 해주세요.
 import com.tnkfactory.ad.*;
 ```
 
-아래와 같이 전면광고 객체를 생성합니다.
+아래와 같이 Placement ID를 입력하여 전면 광고 객체를 생성합니다.
 ```java
 @Override
 public void onCreate(Bundle savedInstanceState) {
-...
+  ...
 
     InterstitialAdItem interstitialAdItem = new InterstitialAdItem(this, "YOUR-PlACEMENT-ID");
-...
+    
+  ...
+}
 ```
 
 ### 전면 광고 띄우기
 
-전면광고가 로드되는 시점에 바로 광고를 띄우려면 AdListener 를 사용합니다.
+#### 광고 로드 후 바로 노출
+
+전면 광고가 로드되는 시점에 바로 광고를 띄우려면 AdListener 를 사용합니다.
 
 ```java
-public class MainActivity extends Activity {
+public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
+      ...
 
-...
-
+        // 전면 광고 객체 생성
         InterstitialAdItem interstitialAdItem = new InterstitialAdItem(this,"YOUR-PlACEMENT-ID");
-	interstitialAdItem.setLisenter(new AdListener() {
+      	// AdListener를 사용해 전면 광고가 로드되는 시점에 노출
+        interstitialAdItem.setLisenter(new AdListener() {
             @Override
             public void onLoad(AdItem adItem) {
                 adItem.show();
             }
         });
 
+      	// 전면 광고 로드
         interstitialAdItem.load();
-	
-...
-
+        
+      ...
+    }
+}
 ```
+
+#### 광고 로드 후 일정시간 후에 노출
 
 만약 광고를 로드하고 일정시간 후에 광고를 띄우시려면 아래와 같이 광고가 성공적으로 로딩되었는지 확인한 후 광고를 띄우실 수 있습니다.
 
 ```java
+// 전면 광고 객체 생성
 InterstitialAdItem interstitialAdItem = new InterstitialAdItem(this,"YOUR-PlACEMENT-ID");
+// 전면 광고 로드
 interstitialAdItem.load();
 
 ...
 
-
+// 일정시간 후에 광고가 로드 되었는지 확인 후 show 호출 
+// load와 show를 동시 호출하면 광고 미로드 상태로 전면 광고가 노출되지 않습니다.
 if (interstitialAdItem.isLoaded()) {
     interstitialAdItem.show();
 }
@@ -183,11 +198,10 @@ if (interstitialAdItem.isLoaded()) {
 
 ```java
 interstitialAdItem.setListener(new AdListener() {
-
-    ...
+  ...
 
     /**
-     * 화면 닫힐 때 호출됨 (배너는 다른 광고가 로딩될때 이전 광고에 대하여 호출됨, native 는 detach 시점에 호출됨)
+     * 화면 닫힐 때 호출됨
      * @param adItem 이벤트 대상이되는 AdItem 객체
      * @param type 0:simple close, 1: auto close, 2:exit
      */
@@ -199,96 +213,217 @@ interstitialAdItem.setListener(new AdListener() {
         }
     }
 
-    ...
-
+  ...
 });
 ```
 
-
-
 ## 3. 배너 광고 (Banner Ad)
 
-배너 광고를 사용하는 방법은 Xml 방식과 뷰 동적 생성 방식 두 가지가 있습니다.
+배너 광고를 사용하는 방법은 XML 뷰 삽입 방식과 뷰 동적 생성 방식 두 가지가 있습니다.
 
-#### XML 뷰 삽입 방식
+### XML 뷰 삽입 방식
 
-레이아웃 XML 내에 아래와 같이 BannerAdView를 넣어줍니다.
+#### 배너 뷰 생성
+
+레이아웃 XML 내에 아래와 같이 배너 뷰를 생성합니다.
 
 이때 Placement ID를 입력해줍니다.
 
 ```xml
-<com.tnkfactory.ad.BannerAdView
-		android:id="@+id/banner_ad_view"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    app:placement_id="YOUR-PLACEMENT-ID" />
+<RelativeLayout
+   ...
+   >
+			...
+  
+        <com.tnkfactory.ad.BannerAdView
+            android:id="@+id/banner_ad_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:placement_id="YOUR-PLACEMENT-ID" />
+  
+  		...
+</RelativeLayout>
 ```
 
-배너 광고를 로드해줍니다.
+#### 배너 광고 로드
+
+XML에 삽입된 배너 뷰에 아래와 같이 광고를 로드합니다.
 
 ```java
-BannerAdView bannerAdView = findViewById(R.id.banner_ad_view);
-bannerAdView.load();
+public class MainActivity extends AppCompatActivity {
+    
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+    	...
+        
+        BannerAdView bannerAdView = findViewById(R.id.banner_ad_view);
+    
+    		// 배너 광고 로드
+        bannerAdView.load();
+    
+    	...
+    }
+}
 ```
 
-#### 뷰 동적 생성 방식
+### 뷰 동적 생성 방식
 
-Placement ID를 입력하여 BannerAdView를 생성 후 배너 광고를 로드해줍니다.
+#### 부모 레이아웃 생성
+
+레이아웃 XML 내에 아래와 같이 배너 뷰를 넣어 줄 부모 레이아웃을 생성합니다.
+
+```xml
+<RelativeLayout
+   ...
+   >
+			...
+  
+        <RelativeLayout
+            android:id="@+id/banner_ad_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+  
+  		...
+</RelativeLayout>
+```
+
+#### 배너 광고 로드
+
+아래와 같이 Placement ID를 입력하여 배너 뷰 생성 후 배너 광고를 로드해줍니다.
 
 ```java
-BannerAdView bannerAdView = new BannerAdView(this, "YOUR-PLACEMENT-ID");
-bannerAdView.load();
+public class MainActivity extends AppCompatActivity {
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+			...
+        
+        RelativeLayout bannerAdLayout = findViewById(R.id.banner_ad_layout);
+      
+      	// 배너 뷰 객체 생성
+        BannerAdView bannerAdView = new BannerAdView(this, "YOUR-PLACEMENT-ID");
+      
+      	// 부모 레이아웃에 배너 뷰 삽입
+        bannerAdLayout.addView(bannerAdView);
+
+      	// 배너 광고 로드
+        bannerAdView.load();
+      
+      ...
+    }
+}
 ```
-
-
 
 ## 4. 피드형 광고 (Feed Ad)
 
 피드형 광고를 사용하는 방법은 Xml 방식과 뷰 동적 생성 방식 두 가지가 있습니다.
 
-#### Xml 뷰 삽입 방식
+### Xml 뷰 삽입 방식
 
-레이아웃 Xml 내에 아래와 같이 FeedAdView를 넣어줍니다.
+#### 피드 뷰 생성
+
+레이아웃 Xml 내에 아래와 같이 피드 뷰를 넣어줍니다.
 
 이때 Placement ID를 입력해줍니다.
 
 ```xml
-<com.tnkfactory.ad.FeedAdView
-		android:id="@+id/feed_ad_view"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    app:placement_id="YOUR-PLACEMENT-ID"/>
+<RelativeLayout
+   ...
+   >
+			...
+  
+        <com.tnkfactory.ad.FeedAdView
+            android:id="@+id/feed_ad_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:placement_id="YOUR-PLACEMENT-ID"/>
+  
+  		...
+</RelativeLayout>
 ```
 
-```
-FeedAdView feedAdView = findViewById(R.id.feed_ad_view);
-feedAdView.load();
+#### 피드 광고 로드
+
+XML에 삽입된 피드 뷰에 아래와 같이 광고를 로드합니다.
+
+```java
+public class MainActivity extends AppCompatActivity {
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+
+        FeedAdView feedAdView = findViewById(R.id.feed_ad_view);
+
+        // 피드 광고 로드
+        feedAdView.load();
+    }
+}
 ```
 
-#### 뷰 동적 생성 방식
+### 뷰 동적 생성 방식
 
-코드로 Placement ID를 사용하여 FeedAdView를 생성 후 피드형 광고를 로드해줍니다.
+#### 부모 레이아웃 생성
 
+레이아웃 XML 내에 아래와 같이 피드 뷰를 넣어 줄 부모 레이아웃을 생성합니다.
+
+```xml
+<RelativeLayout
+   ...
+   >
+			...
+  
+        <RelativeLayout
+            android:id="@+id/feed_ad_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+  
+  		...
+</RelativeLayout>
 ```
-FeedAdView feedAdView = new FeedAdView(this, "YOUR-PLACEMENT-ID");
+
+#### 피드 광고 로드
+
+아래와 같이 Placement ID를 입력하여 피드 뷰 생성 후 배너 광고를 로드해줍니다.
+
+```java
+public class MainActivity extends AppCompatActivity {
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+			...
+        
+        RelativeLayout feedAdLayout = findViewById(R.id.feed_ad_layout);
+
+        // 피드 뷰 객체 생성
+        FeedAdView feedAdView = new FeedAdView(this, "YOUR-PLACEMENT-ID");
+
+        // 부모 레이아웃에 피드 뷰 삽입
+        feedAdLayout.addView(feedAdView);
+
+        // 피드 광고 로드
+        feedAdView.load();
+      
+      ...
+    }
+}
 ```
 
 
 
 ## 5. 네이티브 광고 (Native Ad)
 
-#### 레이아웃 생성 (native_ad_item.xml)
+### 레이아웃 생성 
 
-네이티브 광고를 보여줄 레이아웃을 생성합니다.
+네이티브 광고를 보여줄 레이아웃(native_ad_item.xml)을 생성합니다.
+
+아래 레이아웃은 예시이며 실제로 사용시 원하시는 구조로 만드시면 됩니다.
 
 ```xml
 <RelativeLayout
-	xmlns:android="http://schemas.android.com/apk/res/android"
-	xmlns:tools="http://schemas.android.com/tools"
 	android:layout_width="match_parent"
 	android:layout_height="wrap_content"
 	android:padding="6dp"
-	android:background="#FFFFFF">
+	android:background="#DDDDDD">
 
 	<RelativeLayout
 		android:id="@+id/native_ad_image_layout"
@@ -298,34 +433,20 @@ FeedAdView feedAdView = new FeedAdView(this, "YOUR-PLACEMENT-ID");
 		<FrameLayout
 			android:id="@+id/native_ad_content"
 			android:layout_width="match_parent"
-			android:layout_height="wrap_content"
-			tools:background="#FF5722"
-			tools:layout_height="300dp" />
-		
+			android:layout_height="wrap_content"/>
+
 		<ImageView
 			android:id="@+id/native_ad_watermark_container"
 			android:layout_width="wrap_content"
 			android:layout_height="wrap_content"
-			android:layout_alignParentRight="true"
-			tools:background="#FFEB3B" />
+			android:layout_alignParentRight="true"/>
 	</RelativeLayout>
-
-	<TextView
-		android:id="@+id/native_ad_rating"
-		android:layout_width="100dp"
-		android:layout_height="20dp"
-		android:layout_centerHorizontal="true"
-		android:layout_below="@id/native_ad_image_layout"
-		android:layout_marginTop="5dp"
-		android:layout_marginLeft="5dp"
-		android:textColor="#ffffffff"
-		android:textSize="16dp"/>
 
 	<RelativeLayout
 		android:layout_width="match_parent"
 		android:layout_height="wrap_content"
-		android:layout_marginTop="5dp"
-		android:layout_below="@+id/native_ad_rating">
+		android:layout_marginTop="10dp"
+		android:layout_below="@+id/native_ad_image_layout">
 
 		<ImageView
 			android:id="@+id/native_ad_icon"
@@ -334,8 +455,7 @@ FeedAdView feedAdView = new FeedAdView(this, "YOUR-PLACEMENT-ID");
 			android:layout_alignParentTop="true"
 			android:layout_alignParentLeft="true"
 			android:padding="4dp"
-			android:scaleType="fitXY"
-			tools:background="#00BCD4" />
+			android:scaleType="fitXY"/>
 		<TextView
 			android:id="@+id/native_ad_title"
 			android:layout_width="match_parent"
@@ -346,8 +466,7 @@ FeedAdView feedAdView = new FeedAdView(this, "YOUR-PLACEMENT-ID");
 			android:layout_marginLeft="8dp"
 			android:gravity="center_vertical"
 			android:textColor="#ff020202"
-			android:textSize="17sp"
-			tools:background="#03A9F4" />
+			android:textSize="17sp"/>
 		<TextView
 			android:id="@+id/native_ad_desc"
 			android:layout_width="match_parent"
@@ -358,41 +477,121 @@ FeedAdView feedAdView = new FeedAdView(this, "YOUR-PLACEMENT-ID");
 			android:layout_marginTop="8dp"
 			android:gravity="center_vertical"
 			android:textColor="#ff179dce"
-			android:textSize="13sp"
-			tools:background="#2196F3" />
+			android:textSize="13sp"/>
 	</RelativeLayout>
 </RelativeLayout>
 ```
 
-#### 네이티브 광고 로드
+### 네이티브 객체 생성
 
 ```java
-NativeAdItem nativeAdItem = new NativeAdItem(this, "YOUR-PlACEMENT-ID");
-nativeAdItem.load();
+@Override
+public void onCreate(Bundle savedInstanceState) {
+  ...
+
+    NativeAdItem nativeAdItem = new NativeAdItem(this, "YOUR-PlACEMENT-ID");
+    
+  ...
+}
 ```
 
-#### 네이티브 광고 노출
+### 네이티브 광고 띄우기
 
-로드 완료 후 진행합니다.
+#### 광고 로드 후 바로 노출
+
+네이티브 광고가 로드되는 시점에 바로 광고를 띄우려면 AdListener 를 사용합니다.
 
 ```java
-if (nativeAdItem != null & nativeAdItem.isLoaded()) {
+public class MainActivity extends AppCompatActivity {
+	...
+    
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+			...
+
+        NativeAdItem nativeAdItem = new NativeAdItem(this, "TEST_NATIVE");
+
+        // AdListener를 사용해 네이티브 광고가 로드되는 시점에 노출
+        nativeAdItem.setListener(new AdListener() {
+
+            @Override
+            public void onLoad(AdItem adItem) {
+                // 네이티브 광고 노출
+                showNativeAd((NativeAdItem) adItem);
+            }
+        });
+
+        // 네이티브 광고 로드
+        nativeAdItem.load();
+      
+      ...
+    }
+
+  ...
+    
+    // 네이티브 광고 노출
+    private void showNativeAd(NativeAdItem nativeAdItem) {
+
+        if (nativeAdItem != null & nativeAdItem.isLoaded()) {
+
+            // 네이티브 광고가 삽입될 컨테이너 초기화
+            ViewGroup adContainer = findViewById(R.id.native_ad_container);
+            adContainer.removeAllViews();
+
+            // 컨테이너에 네이티브 아이템 레이아웃 삽입
+            View.inflate(this, R.layout.native_ad_item, adContainer);
+
+            // 네이티브 바인더 객채 생성
+            // 생성자에 메인 컨텐츠가 표시될 뷰 ID 필수 입력
+            NativeViewBinder binder = new NativeViewBinder(R.id.native_ad_content);
+
+            // 네이티브 바인더 셋팅
+            binder.iconId(R.id.native_ad_icon)
+                    .titleId(R.id.native_ad_title)
+                    .textId(R.id.native_ad_desc)
+                    .watermarkIconId(R.id.native_ad_watermark_container)
+                    .addClickView(R.id.native_ad_content);
+
+            // 광고 노출
+            nativeAdItem.attach(adContainer, binder);
+        }
+    }
+  
+  ...
+}
+```
+
+#### 광고 로드 후 일정시간 후에 노출
+
+만약 광고를 로드하고 일정시간 후에 광고를 띄우시려면 아래와 같이 광고가 성공적으로 로딩되었는지 확인한 후 광고를 띄우실 수 있습니다.
+
+```java
+// 전면 광고 객체 생성
+NativeAdItem nativeAdItem = new NativeAdItem(this,"YOUR-PlACEMENT-ID");
+// 네이티브 광고 로드
+nativeAdItem.load();
+
+...
+  
+// 일정시간 후에 광고가 로드 되었는지 확인 후 show 호출
+// load와 show를 동시 호출하면 광고 미로드 상태로 전면 광고가 노출되지 않습니다.
+if (nativeAdItem.isLoaded()) {
 
     // 네이티브 광고가 삽입될 컨테이너 초기화
     ViewGroup adContainer = findViewById(R.id.native_ad_container);
     adContainer.removeAllViews();
 
-    // 네이티브 아이템 레이아웃 삽입
-    LayoutInflater inflater = (LayoutInflater) getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-    RelativeLayout adItemView = (RelativeLayout) inflater.inflate(R.layout.native_ad_item, null);
-    adContainer.addView(adItemView);
+    // 컨테이너에 네이티브 아이템 레이아웃 삽입
+    View.inflate(this, R.layout.native_ad_item, adContainer);
+
+    // 네이티브 바인더 객채 생성
+    // 생성자에 메인 컨텐츠가 표시될 뷰 ID 필수 입력
+    NativeViewBinder binder = new NativeViewBinder(R.id.native_ad_content);
 
     // 네이티브 바인더 셋팅
-    NativeViewBinder binder = new NativeViewBinder(R.id.native_ad_content);
     binder.iconId(R.id.native_ad_icon)
             .titleId(R.id.native_ad_title)
             .textId(R.id.native_ad_desc)
-            .starRatingId(R.id.native_ad_rating)
             .watermarkIconId(R.id.native_ad_watermark_container)
             .addClickView(R.id.native_ad_content);
 
@@ -401,37 +600,17 @@ if (nativeAdItem != null & nativeAdItem.isLoaded()) {
 }
 ```
 
-
-
 ## 6. 동영상 광고 (Video Ad)
 
-동영상 광고는 전면 광고와 사용 방법이 같습니다.
+동영상 광고는 전면 광고와 사용 방법이 같아서 Placement ID를 생성할 때 동영상 광고 설정을 진행해주시고 [전면 광고 가이드](#2-전면-광고-interstitial-ad)를 그대로 활용하시면 됩니다.
 
-#### 전면 광고 로드
-
-```java
-InterstitialAdItem interstitialAdItem = new InterstitialAdItem(this, "YOUR-PlACEMENT-ID");
-interstitialAdItem.load();
-```
-
-#### 전면 광고 노출
-
-로드 완료 후 진행합니다.
-
-```java
-if (interstitialAdItem.isLoaded()) {
-		interstitialAdItem.show();
-}
-```
-
-#### 리워드 동영상 광고 적립 여부 확인
+### 리워드 동영상 광고 적립 여부 확인
 
 리워드 동영상 광고의 경우 재생 완료 후 AdListener를 사용하여 적립 여부를 확인할 수 있습니다.
 
 ```java
 interstitialAdItem.setListener(new AdListener() {
- 
-    ...
+  ...
 
     /**
      * 광고의 재생이 완료되었을 경우 호출됩니다.
@@ -449,8 +628,7 @@ interstitialAdItem.setListener(new AdListener() {
         }
     }
 
-    ...
-    
+  ...
 });
 ```
 
@@ -479,7 +657,7 @@ public abstract class AdListener {
     public static int VIDEO_VERIFY_FAILED_ERROR = -9; // 그외 시스템 에러가 발생
 
     /**
-     * 화면 닫힐 때 호출됨 (배너는 다른 광고가 로딩될때 이전 광고에 대하여 호출됨, native 는 detach 시점에 호출됨)
+     * 화면 닫힐 때 호출됨
      * @param adItem 이벤트 대상이되는 AdItem 객체
      * @param type 0:simple close, 1: auto close, 2:exit
      */
@@ -540,7 +718,7 @@ public abstract class AdListener {
 
 
 
-###### [맞춤 이벤트 추가 예시]
+### 맞춤 이벤트 추가 예시
 
 AdMob 로그인 후 메뉴에서 미디에이션 탭을 누르시면 아래 이미지와 같이 미디에이션 그룹을 만들 수 있는 화면이 표시됩니다.
 
