@@ -545,7 +545,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
 			...
 
-        NativeAdItem nativeAdItem = new NativeAdItem(this, "TEST_NATIVE");
+        NativeAdItem nativeAdItem = new NativeAdItem(this, "YOUR-PlACEMENT-ID");
 
         // AdListener를 사용해 네이티브 광고가 로드되는 시점에 노출
         nativeAdItem.setListener(new AdListener() {
