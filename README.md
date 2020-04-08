@@ -575,7 +575,7 @@ public class MainActivity extends AppCompatActivity {
             adContainer.removeAllViews();
 
             // 컨테이너에 네이티브 아이템 레이아웃 삽입
-            View.inflate(this, R.layout.native_ad_item, adContainer);
+            ViewGroup view = (ViewGroup) View.inflate(this, R.layout.native_ad_item, adContainer);
 
             // 네이티브 바인더 객채 생성
             // 생성자에 메인 컨텐츠가 표시될 뷰 ID 필수 입력
@@ -588,8 +588,8 @@ public class MainActivity extends AppCompatActivity {
                     .watermarkIconId(R.id.native_ad_watermark_container)
                     .addClickView(R.id.native_ad_content);
 
-            // 광고 노출
-            nativeAdItem.attach(adContainer, binder);
+            // 네이티브 광고 노출
+            nativeAdItem.attach(view, binder);
         }
     }
   
@@ -618,7 +618,7 @@ if (nativeAdItem.isLoaded()) {
     adContainer.removeAllViews();
 
     // 컨테이너에 네이티브 아이템 레이아웃 삽입
-    View.inflate(this, R.layout.native_ad_item, adContainer);
+ 		ViewGroup view = (ViewGroup) View.inflate(this, R.layout.native_ad_item, adContainer);
 
     // 네이티브 바인더 객채 생성
     // 생성자에 메인 컨텐츠가 표시될 뷰 ID 필수 입력
@@ -631,8 +631,8 @@ if (nativeAdItem.isLoaded()) {
             .watermarkIconId(R.id.native_ad_watermark_container)
             .addClickView(R.id.native_ad_content);
 
-    // 광고 노출
-    nativeAdItem.attach(adContainer, binder);
+    // 네이티브 광고 노출
+    nativeAdItem.attach(view, binder);
 }
 ```
 
