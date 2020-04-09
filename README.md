@@ -577,7 +577,7 @@ public class MainActivity extends AppCompatActivity {
             // 컨테이너에 네이티브 아이템 레이아웃 삽입
             ViewGroup view = (ViewGroup) View.inflate(this, R.layout.native_ad_item, adContainer);
 
-            // 네이티브 바인더 객채 생성
+            // 네이티브 바인더 객체 생성
             // 생성자에 메인 컨텐츠가 표시될 뷰 ID 필수 입력
             NativeViewBinder binder = new NativeViewBinder(R.id.native_ad_content);
 
@@ -620,7 +620,7 @@ if (nativeAdItem.isLoaded()) {
     // 컨테이너에 네이티브 아이템 레이아웃 삽입
  		ViewGroup view = (ViewGroup) View.inflate(this, R.layout.native_ad_item, adContainer);
 
-    // 네이티브 바인더 객채 생성
+    // 네이티브 바인더 객체 생성
     // 생성자에 메인 컨텐츠가 표시될 뷰 ID 필수 입력
     NativeViewBinder binder = new NativeViewBinder(R.id.native_ad_content);
 
