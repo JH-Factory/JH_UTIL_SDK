@@ -606,4 +606,4 @@ protected void onCreate(Bundle savedInstanceState) {
 
 ### 차이점
 
-1) 신규 SDK 동영상 광고는 전면 광고 사용방법과 동일하며 Placement ID 생성 후 광고 설정을 동영상으로 설정해주시면 동영상 광고 사용이 가능합니다.
+신규 SDK 동영상 광고는 전면 광고 사용방법과 동일하며 Placement ID 생성 후 광고 설정을 동영상으로 설정해주시면 동영상 광고 사용이 가능합니다.
