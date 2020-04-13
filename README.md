@@ -40,7 +40,7 @@
    * [템플릿 디자인 제공](#템플릿-디자인-제공)
      * [사용방법 예시](#사용방법-예시)
      * [템플릿 디자인](#템플릿-디자인)
-   * [TnkLayout](#tnklayout-객체)
+   * [TnkLayout](#tnklayout)
      * [TnkLayout 객체](#tnklayout-객체)
      * [적용 예시](#적용-예시)
 
