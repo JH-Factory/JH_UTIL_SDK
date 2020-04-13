@@ -38,6 +38,11 @@
    라. [디자인 변경하기](#라-디자인-변경하기)
 
    * [템플릿 디자인 제공](#템플릿-디자인-제공)
+     * [사용방법 예시](#사용방법-예시)
+     * [템플릿 디자인](#템플릿-디자인)
+   * [TnkLayout](#tnklayout-객체)
+     * [TnkLayout 객체](#tnklayout-객체)
+     * [적용 예시](#적용-예시)
 
 ## 1. SDK 설정하기
 
@@ -867,7 +872,7 @@ TnkSession.popupAdList(this, "Title", null, TemplateLayoutUtils.getBlueStyle_01(
 
 ![RedStyle_08](./img/RedStyle_08.png)
 
-#### TnkLayout (통합 오퍼월 가이드 미작성)
+#### TnkLayout
 
 TnkLayout 기능을 사용하면 화면 구성 자체를 원하는 UI로 변경이 가능합니다.
 
@@ -898,8 +903,8 @@ TnkLayout 객체를 생성하시고 아래의 속성값을 지정합니다. 모�
 | adwall.idClose               | 광고 목록 화면 닫기 용 Button 의 ID                          |
 | adwall.idHelpdesk            | 포인트 지급 문의 용 Button 의 ID                             |
 | adwall.idListStyle           | 리스트 스타일 변경 Button 의 ID                              |
-| adwall.bgListStyleIcon       | Icon형 리스트 스타일 변경 Button 배경 이미지의 Drawable ID   |
-| adwall.bgListStyleFeed       | Feed형 리스트 스타일 변경 Button 배경 이미지의 Drawable ID   |
+| adwall.bgListStyleIcon       | Icon형 리스트 스타일 변경 Button 의 배경 이미지 Drawable ID  |
+| adwall.bgListStyleFeed       | Feed형 리스트 스타일 변경 Button 의 배경 이미지 Drawable ID  |
 | adwall.listDividerHeightIcon | Icon형 리스트 아이템 간 구분선 Height                        |
 | adwall.listDividerHeightFeed | Feed형 리스트 아이템 간 구분선 Height                        |
 | adwall.isHelpDeskPopupStyle  | 이용문의 팝업 스타일 사용 여부                               |
@@ -959,7 +964,7 @@ TnkLayout 객체를 생성하시고 아래의 속성값을 지정합니다. 모�
 | adwall.detail.idAction           | 사용자 수행 내용 표시 TextView 의 ID                         |
 | adwall.detail.idActionList       | 사용자 수행 내용 표시 리스트 ViewGrop 의 ID                  |
 | adwall.detail.idConfirm          | 이동(광고 참여) Button 의 ID                                 |
-| adwall.detail.idCancel           | 취소 Button 의 ID                                            |
+| adwall.detail.idCancel           | 닫기 Button 의 ID                                            |
 | adwall.detail.idJoinDesc         | 참여시 주의사항 TextView 의 ID                               |
 | adwall.detail.idAppDesc          | 설명문 TextView 의 ID                                        |
 | adwall.detail.idAppDescSeparator | 참여시 주의 사항과 설명문 사이의 구분선 View 의 ID           |
@@ -1072,7 +1077,7 @@ TnkLayout 객체를 생성하시고 아래의 속성값을 지정합니다. 모�
 </LinearLayout>
 ```
 
-광고 목록의 Header Layout XML 작성
+###### 광고 목록의 Header Layout XML 작성
 
 > offerwall_layout_header.xml
 
@@ -1498,7 +1503,7 @@ TnkLayout 객체를 생성하시고 아래의 속성값을 지정합니다. 모�
 
 
 
-TnkLayout 객체 생성 및 AdListView 띄우기
+###### TnkLayout 객체 생성 및 AdListView 띄우기
 
 ```java
 public class OfferwallTemplateActivity extends AppCompatActivity {
