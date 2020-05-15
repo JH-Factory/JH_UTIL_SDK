@@ -64,7 +64,7 @@ dependencies {
 
 Tnk 사이트에서 앱 등록하면 상단에 App ID 가 나타납니다. 이를 AndroidMenifest.xml 파일의 <application> tag 안에 아래와 같이 설정합니다. 
 
-(*your-application-id-from-tnk-site* 부분을 실제 App ID 값으로 변경하세요.)
+(*your-application-id-from-tnk-site* 부분을 실제 App ID 값으로 변경하세요.) 
 
 ```xml
 <application>
