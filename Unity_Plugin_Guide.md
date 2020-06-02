@@ -44,12 +44,14 @@
    * [TnkAd.Plugin - purchaseItem()](#tnkadplugin---purchaseitem)
      * [Method](#method-4)
      * [Description](#description-3)
-     * Parameters
-   * TnkAd.Plugin - withdrawPoints()
-     * Method
-     * Description
-     * Parameters
-     * 포인트 조회 및 인출 기능 적용예시
+     * [Parameters](#parameters-4)
+   * [TnkAd.Plugin - withdrawPoints()](#tnkadplugin---withdrawpoints)
+     * [Method](#method-5)
+     * [Description](#description-4)
+     * [Parameters](#parameters-5)
+     * [포인트 조회 및 인출 기능 적용예시](#포인트-조회-및-인출-기능-적용예시)
+
+   4) 그밖의 기능들
 
 
 
@@ -533,7 +535,7 @@ public class TnkUITest : MonoBehaviour {
 }
 ```
 
-### 그밖의 기능들
+### 4. 그밖의 기능들
 
 #### TnkAd.Plugin - queryPublishState()
 
