@@ -46,7 +46,6 @@
 
    다. [그밖의 기능들](#다-그밖의-기능들)
 
-      * [TnkSession.setAdWallListType()](#tnksessionsetadwalllisttype)
    * [TnkSession.queryPublishState()](#tnksessionquerypublishstate)
    * [TnkSession.queryAdvertiseCount()](#tnksessionqueryadvertisecount)
    * [TnkSession.enableLogging()](#tnksessionenablelogging)
@@ -59,7 +58,7 @@
       * [템플릿 디자인 제공](#템플릿-디자인-제공)
            * [사용방법 예시](#사용방법-예시)
            * [템플릿 디자인](#템플릿-디자인)
-   
+
 3. [Analytics Report](#3-analytics-report)
 
    * [기본 설정](#기본-설정)
@@ -71,9 +70,8 @@
      * [TnkSession.buyCompleted()](#tnksessionbuycompleted)
    * [사용자 정보 설정](#사용자-정보-설정)
    
-4. Unity Plugin
-
-   - 설정하기
+   
+   
 
 ## 1. SDK 설정하기
 
@@ -199,10 +197,11 @@ Tnk의 SDK를 적용하여 게시앱을 구현하는 것은 크게 3단계로 �
 ##### Method
 
 - void TnkSession.showAdList(Activity activity)
-
+- void TnkSession.showAdList(Activity activity, AdListType adListType)
 - void TnkSession.showAdList(Activity activity, String title)
-
+- void TnkSession.showAdList(Activity activity, String title, AdListType adListType)
 - void TnkSession.showAdList(Activity activity, String title, TnkLayout userLayout)
+- void TnkSession.showAdList(Activity activity, String title, AdListType adListType, TnkLayout userLayout)
 
 ##### Description
 
@@ -214,8 +213,9 @@ Tnk의 SDK를 적용하여 게시앱을 구현하는 것은 크게 3단계로 �
 
 | 파라메터 명칭 | 내용                                                         |
 | ------------- | ------------------------------------------------------------ |
-| context       | 현재 Activity 객체                                           |
+| activity      | 현재 Activity 객체                                           |
 | title         | 광고 리스트의 타이틀을 지정함  (기본값 : 무료 포인트 받기)   |
+|adListType | 광고 리스트의 타입 (DEFAULT : 보상형과 구매형 모두 표시, PPI : 보상형, CPS : 구매형)   |
 | userLayout    | 원하는 Layout을 지정할 수 있습니다. 자세한 내용은  [[디자인 변경하기](#라-디자인-변경하기)] 내용을 참고해주세요. |
 
 ##### 적용예시
@@ -250,15 +250,13 @@ public void onCreate(Bundle savedInstanceState) {
 ##### Method
 
 - void TnkSession.popupAdList(Activity activity)
-
+- void TnkSession.popupAdList(Activity activity, AdListType adListType)
 - void TnkSession.popupAdList(Activity activity, String title)
-
+- void TnkSession.popupAdList(Activity activity, String title, AdListType adListType)
 - void TnkSession.popupAdList(Activity activity, String title, TnkAdListener listener)
-
+- void TnkSession.popupAdList(Activity activity, String title, AdListType adListType, TnkAdListener listener)
 - void TnkSession.popupAdList(Activity activity, String title, TnkAdListener listener, TnkLayout userLayout)
-
-  Description
-
+- void TnkSession.popupAdList(Activity activity, String title, AdListType adListType, TnkAdListener listener, TnkLayout userLayout)
 
 ##### Description
 
@@ -272,6 +270,7 @@ public void onCreate(Bundle savedInstanceState) {
 | ------------- | ------------------------------------------------------------ |
 | activity      | 현재 Activity 객체                                           |
 | title         | 광고 리스트의 타이틀을 지정함  (기본값 : 무료 포인트 받기)   |
+|adListType | 광고 리스트의 타입 (DEFAULT : 보상형과 구매형 모두 표시, PPI : 보상형, CPS : 구매형)   |
 | listnener     | TnkAdListener 객체. 자세한 내용은 아래 [[Listener 이용하기](#listener-이용하기)] 내용을 참고해주세요. |
 | userLayout    | 원하는 Layout을 지정할 수 있습니다. 자세한 내용은  [[디자인 변경하기](#라-디자인-변경하기)] 내용을 참고해주세요. |
 
@@ -341,6 +340,10 @@ AdListView는 보상형 광고목록을 제공하는 View 객체입니다. 개�
 ###### void setTitle(String title)
 
 - 광고목록 상단 타이틀을 설정합니다.
+
+###### void setAdListType(AdListType adListType)
+
+- 광고 리스트의 타입을 설정합니다. (DEFAULT : 보상형과 구매형 모두 표시, PPI : 보상형, CPS : 구매형)
 
 
 ###### void setListener(TnkAdListener listener)
@@ -735,28 +738,6 @@ static public void getEarnPoint() {
 ```
 
 ### 다. 그밖의 기능들
-
-#### TnkSession.setAdWallListType()
-
-오퍼월 리스트 광고 타입을 설정합니다. 광고 타입으로는 보상형과 구매형 두 가지가 있으며 기본 설정은 두가지 타입 모두 나오는 것이지만 해당 기능을 통해 한가지 타입만 나오도록 설정이 가능합니다. 
-
-##### Method
-
-* void TnkSession.setAdWallListType(int listType)
-
-##### Parameters
-| 파라메터 명칭 | 내용                                                         |
-| -------------- | ----------------------------------------------------------- |
-| listType       | 오퍼월 리스트 광고 타입                         |
-
-* 사용가능한 타입의 종류는 아래와 같습니다.
-
-| 값                          | 타입                                     |
-| --------------------------- | -------------------------------------------------------------- |
-| TnkSession.AD_LIST_TYPE_DEFAULT | 보상형과 구매형 모두 표시               |
-| TnkSession.AD_LIST_TYPE_PPI | 보상형만 표시                            |
-| TnkSession.AD_LIST_TYPE_CPS| 구매형만 표시                            |
-
 
 #### TnkSession.queryPublishState()
 
@@ -1839,8 +1820,3 @@ TnkSession.setUserGender(this,TnkCode.MALE);
 TnkSession.setUserGender(this,TnkCode.FEMALE); 
 ```
 
-## 4. Unity Plugin
-
-### 설정하기
-
-Tnk에서 제공하는 tnkad-rwd.unitypackage 파일을 다운 받습니다. [Unity Plugin 다운받기]
