@@ -2,15 +2,14 @@
 
 ## 목차
 
-1. [설정하기]
-* [Plugin Download](#plugin-download)
-* [Plugin Import](#plugin-import)
-* [AdnroidMenifest.xml 설정](#adnroidmenifestxml-설정)
-  * [Permission 설정](#application-id-설정하기)
-  * [Tnk App ID 설정](#권한-설정)
-  * [Activity tag 추가하기](#activity-tag-추가하기)
-  * [Proguard 사용](#proguard-사용)
-  * [COPPA 설정](#coppa-설정)
+1. Unity Settings
+   * Plugin Download](#plugin-download)
+   * Plugin Import](#plugin-import)
+   * AdnroidMenifest.xml 설정](#adnroidmenifestxml-설정)
+     * [Permission 설정](#application-id-설정하기)
+     * [Tnk App ID 설정](#권한-설정)
+     * [Offerwall Activity 설정](#activity-tag-추가하기)
+     * [UnityPlayer](#proguard-사용)
 
 2. [Publisher API]
 
