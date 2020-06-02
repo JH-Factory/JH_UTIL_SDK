@@ -3,11 +3,11 @@
 ## 목차
 
 1. [설정하기]
-* [플러그인 다운로드](#플러그인-다운로드)
-   * [플러그인 Import]
-   * [Manifest 설정하기](#manifest-설정하기)
-     * [Application ID 설정하기](#application-id-설정하기)
-     * [권한 설정](#권한-설정)
+* [Plugin Download](#plugin-download)
+   * [Plugin Import](#plugin-import)
+   * [AdnroidMenifest.xml 설정](#adnroidmenifestxml-설정)
+     * [Permission 설정](#application-id-설정하기)
+     * [Tnk App ID 설정](#권한-설정)
      * [Activity tag 추가하기](#activity-tag-추가하기)
    * [Proguard 사용](#proguard-사용)
    * [COPPA 설정](#coppa-설정)
@@ -16,15 +16,13 @@
 
 
 
-## 1. 설정하기
+## 1. Unity Settings
 
 ### Plugin Download
 
 Tnk에서 제공하는 tnkad-rwd.unitypackage 파일을 다운 받습니다.
 
 **[[Unity Plugin 다운받기](http://cdn1.tnkfactory.com/sdk/tnkad-rwd.unitypackage)]**
-
-
 
 ### Plugin Import
 
@@ -101,7 +99,7 @@ Plugin 내에는 TnkAdAndroidMenifest.xml 파일이 포함되어 있습니다. �
 </manifest>
 ```
 
-### Permission 설정
+#### Permission 설정
 
 TnkAd SDK 가 필요로 하는 permission을 아래와 같이 설정합니다.
 
@@ -115,7 +113,7 @@ TnkAd SDK 가 필요로 하는 permission을 아래와 같이 설정합니다.
 <uses-permission android:name="com.google.android.finsky.permission.BIND_GET_INSTALL_REFERRER_SERVICE"/>
 ```
 
-### Tnk App ID 설정
+#### Tnk App ID 설정
 
 Tnk 사이트에서 앱 등록하면 상단에 App ID 가 나타납니다. 이를 AndroidMenifest.xml 파일의 <application> tag 안에 아래와 같이 설정합니다. 
 
@@ -131,7 +129,7 @@ Tnk 사이트에서 앱 등록하면 상단에 App ID 가 나타납니다. 이�
 </application>
 ```
 
-### Offerwall Activity 설정
+#### Offerwall Activity 설정
 
 Offerwall Activity는 보상형 광고목록이 출력되는 Activity입니다. 매체앱으로서 충전소 기능을 탑제하시려면 아래의 <activity/> 설정을 추가하셔야합니다. 
 
@@ -140,7 +138,7 @@ Offerwall Activity는 보상형 광고목록이 출력되는 Activity입니다. 
 <activity android:name="com.tnkfactory.ad.AdMediaActivity" android:screenOrientation="landscape"/>
 ```
 
-### UnityPlayer 설정
+#### UnityPlayer 설정
 
 Unity 4.3 이상 버전을 사용하신다면 아래와 같이 ForwardNativeEventsToDalvik 옵션을 true로 설정하셔야 화면에 touch 이벤트가 동작합니다. 매체앱으로서 전면 중간광고 창을 띄우고자 하신다면 반드시 아래와 같이 설정해주세요. 광고만 진행하시는 경우에는 설정하실 필요가 없습니다.
 
