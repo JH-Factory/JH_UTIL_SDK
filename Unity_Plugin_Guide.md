@@ -3,7 +3,7 @@
 ## 목차
 
 1. [설정하기]
-* [플러그인 다운로드]
+* [플러그인 다운로드](#플러그인-다운로드)
    * [플러그인 Import]
    * [Manifest 설정하기](#manifest-설정하기)
      * [Application ID 설정하기](#application-id-설정하기)
@@ -18,7 +18,7 @@
 
 ## 1. 설정하기
 
-### 플러그인 다운로드
+### Plugin Download
 
 Tnk에서 제공하는 tnkad-rwd.unitypackage 파일을 다운 받습니다.
 
@@ -26,7 +26,7 @@ Tnk에서 제공하는 tnkad-rwd.unitypackage 파일을 다운 받습니다.
 
 
 
-### 플러그인 Import
+### Plugin Import
 
 적용할 Unity 프로젝트를 연 상태에서 다운로드 받은 tnkad-rwd.unitypackage 파일을 실행하면 아래와 같이 Plugin 파일들에 대한 import 창이 열립니다. 
 
