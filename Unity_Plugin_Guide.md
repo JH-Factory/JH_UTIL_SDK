@@ -58,19 +58,19 @@
      * [Parameters](#parameters-6)
      * [적용 예시](#적용-예시-2)
    
-3. [Interstitial Ad]
-* [Incentive Interstitial Ad]
-* [Interstitial Ad APIs]
-  * [TnkAd.Plugin - prepareInterstitialAdForPPI()]
-    * Method
-    * Description
-    * Parameters
-  * [TnkAd.Plugin - showInterstitialAdForPPI()]
-    * Method
-    * Description
-    * Parameters
-  * [EventHandler 이용하기]
-  * [Sample]
+3. [Interstitial Ad](#3-interstitial-ad)
+* [Incentive Interstitial Ad](#incentive-interstitial-ad)
+* [Interstitial Ad APIs](#interstitial-ad-apis)
+  * [TnkAd.Plugin - prepareInterstitialAdForPPI()](#tnkadplugin---prepareinterstitialadforppi)
+    * [Method](#method-7)
+    * [Description](#description-5)
+    * [Parameters](#parameters-7)
+  * [TnkAd.Plugin - showInterstitialAdForPPI()](#tnkadplugin---showinterstitialadforppi)
+    * [Method](#method-8)
+    * [Description](#description-6)
+    * [Parameters](#parameters-8)
+  * [EventHandler 이용하기](#eventhandler-이용하기)
+  * [Sample](#sample)
 
 
 
