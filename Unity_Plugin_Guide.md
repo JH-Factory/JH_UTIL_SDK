@@ -51,7 +51,12 @@
      * [Parameters](#parameters-5)
      * [포인트 조회 및 인출 기능 적용예시](#포인트-조회-및-인출-기능-적용예시)
 
-   4) 그밖의 기능들
+   4) [그밖의 기능들](#4-그밖의-기능들)
+
+   * [TnkAd.Plugin - queryPublishState()](#tnkadplugin---querypublishstate)
+     * [Method](#method-6)
+     * [Parameters](#parameters-6)
+     * [적용 예시](#적용-예시-2)
 
 
 
@@ -535,7 +540,7 @@ public class TnkUITest : MonoBehaviour {
 }
 ```
 
-### 4. 그밖의 기능들
+### 4) 그밖의 기능들
 
 #### TnkAd.Plugin - queryPublishState()
 
