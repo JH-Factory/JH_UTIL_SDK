@@ -13,7 +13,7 @@
 
 2. [Publisher API](#2-publisher-api)
 
-   가. [광고 목록 띄우기](#1-광고-목록-띄우기)
+   가. [광고 목록 띄우기](#가-광고-목록-띄우기)
 
    * [유저 식별 값 설정](#유저-식별-값-설정)
      * [Method](#method)
@@ -29,13 +29,13 @@
      * [Parameters](#parameters-2)
      * [적용 예시](#적용-예시-1)
 
-   나. [EventHandler](#2-eventhandler)
+   나. [EventHandler](#나-eventhandler)
 
    * [EventHandler 스크립트 만들기](#eventhandler-스크립트-만들기)
    * [GameObject에 추가하고 Handler Name 지정](#gameobject에-추가하고-handler-name-지정)
    * [설정한 Handler Name을 사용하여 Plugin API 호출](#설정한-handler-name을-사용하여-plugin-api-호출)
 
-   다. [포인트 조회 및 인출](#3-포인트-조회-및-인출)
+   다. [포인트 조회 및 인출](#다-포인트-조회-및-인출)
 
    * [TnkAd.Plugin - queryPoint()](#tnkadplugin---querypoint)
      * [Method](#method-3)
@@ -51,7 +51,7 @@
      * [Parameters](#parameters-5)
      * [포인트 조회 및 인출 기능 적용예시](#포인트-조회-및-인출-기능-적용예시)
 
-   라. [그밖의 기능들](#4-그밖의-기능들)
+   라. [그밖의 기능들](#라-그밖의-기능들)
 
    * [TnkAd.Plugin - queryPublishState()](#tnkadplugin---querypublishstate)
      * [Method](#method-6)
