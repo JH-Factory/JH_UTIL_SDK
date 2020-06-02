@@ -2,16 +2,54 @@
 
 ## 목차
 
-1. Unity Settings
-   * Plugin Download](#plugin-download)
-   * Plugin Import](#plugin-import)
-   * AdnroidMenifest.xml 설정](#adnroidmenifestxml-설정)
-     * [Permission 설정](#application-id-설정하기)
+1. [Unity Settings](#1-unity-settings)
+   * [Plugin Download](#plugin-download)
+   * [Plugin Import](#plugin-import)
+   * [AdnroidMenifest.xml 설정](#adnroidmenifestxml-설정)
+     * [Permission 설정](#permission-설정)
      * [Tnk App ID 설정](#권한-설정)
-     * [Offerwall Activity 설정](#activity-tag-추가하기)
-     * [UnityPlayer](#proguard-사용)
+     * [Offerwall Activity 설정](#offerwall-activity-설정)
+     * [UnityPlayer](#unityplayer-설정)
 
-2. [Publisher API]
+2. [Publisher API](#2-publisher-api)
+
+   1) [광고 목록 띄우기](#1-광고-목록-띄우기)
+
+   * [유저 식별 값 설정](#유저-식별-값-설정)
+     * [Method](#method)
+     * [Parameters](#parameters)
+   * [광고 목록 띄우기 (전체화면)](#광고-목록-띄우기-전체화면)
+     * [Method](#method-1)
+     * [Description](#description)
+     * [Parameters](#parameters-1)
+     * [적용 예시](#적용-예시)
+   * [광고 띄우기 (팝업화면)](#광고-띄우기-팝업화면)
+     * [Method](#method-2)
+     * [Description](#description-1)
+     * [Parameters](#parameters-2)
+     * [적용 예시](#적용-예시-1)
+
+   2) [EventHandler](#2-eventhandler)
+
+   * [EventHandler 스크립트 만들기](#eventhandler-스크립트-만들기)
+   * [GameObject에 추가하고 Handler Name 지정](#gameobject에-추가하고-handler-name-지정)
+   * [설정한 Handler Name을 사용하여 Plugin API 호출](#설정한-handler-name을-사용하여-plugin-api-호출)
+
+   3) [포인트 조회 및 인출](#3-포인트-조회-및-인출)
+
+   * [TnkAd.Plugin - queryPoint()](#tnkadplugin---querypoint)
+     * [Method](#method-3)
+     * [Description](#description-2)
+     * [Parameters](#parameters-3)
+   * [TnkAd.Plugin - purchaseItem()](#tnkadplugin---purchaseitem)
+     * [Method](#method-4)
+     * [Description](#description-3)
+     * Parameters
+   * TnkAd.Plugin - withdrawPoints()
+     * Method
+     * Description
+     * Parameters
+     * 포인트 조회 및 인출 기능 적용예시
 
 
 
@@ -434,7 +472,7 @@ TnK 서버에서는 별도로 아이템 목록을 관리하는 기능을 제공�
 
 Tnk 서버에 적립되어 있는 사용자 포인트를 차감합니다. 차감내역은 Tnk사이트의 보고서 페이지에서 조회하실 수 있습니다.
 
-**Parameters**
+##### Parameters
 
 | 파라메터 명칭 | 내용                                                         |
 | ------------- | ------------------------------------------------------------ |
