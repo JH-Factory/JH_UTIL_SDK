@@ -3,13 +3,13 @@
 ## 목차
 
 1. [Unity Settings](#1-unity-settings)
-   * [Plugin Download](#plugin-download)
-   * [Plugin Import](#plugin-import)
-   * [AdnroidMenifest.xml 설정](#adnroidmenifestxml-설정)
-     * [Permission 설정](#permission-설정)
-     * [Tnk App ID 설정](#tnk-app-id-설정)
-     * [Offerwall Activity 설정](#offerwall-activity-설정)
-     * [UnityPlayer](#unityplayer-설정)
+* [Plugin Download](#plugin-download)
+* [Plugin Import](#plugin-import)
+* [AdnroidMenifest.xml 설정](#adnroidmenifestxml-설정)
+   * [Permission 설정](#permission-설정)
+   * [Tnk App ID 설정](#tnk-app-id-설정)
+   * [Offerwall Activity 설정](#offerwall-activity-설정)
+   * [UnityPlayer](#unityplayer-설정)
 
 2. [Publisher API](#2-publisher-api)
 
@@ -57,6 +57,21 @@
      * [Method](#method-6)
      * [Parameters](#parameters-6)
      * [적용 예시](#적용-예시-2)
+   
+3. [Interstitial Ad]
+* [Incentive Interstitial Ad]
+* [Interstitial Ad APIs]
+  * [TnkAd.Plugin - prepareInterstitialAdForPPI()]
+    * Method
+    * Description
+    * Parameters
+  * [TnkAd.Plugin - showInterstitialAdForPPI()]
+    * Method
+    * Description
+    * Parameters
+  * [EventHandler 이용하기]
+  * [Sample]
+
 
 
 
@@ -132,7 +147,7 @@ Plugin 내에는 TnkAdAndroidMenifest.xml 파일이 포함되어 있습니다. �
     
     <!-- TnkAd  Offerwall Activities -->
     <activity android:name="com.tnkfactory.ad.AdWallActivity" android:screenOrientation="sensor"/>
-    <activity android:name="com.tnkfactory.ad.AdMediaActivity" android:screenOrientation="sensor"/>
+    <activity android:name="com.tnkfactory.ad.AdMediaActivity" android:screenOrientation="landscape"/>
     
     <!-- Set your Tnk App_ID here -->
     <meta-data android:name="tnkad_app_id" android:value="your-appid-from-tnk-site" />
@@ -269,7 +284,7 @@ public class TnkUITest : MonoBehaviour {
   
   void OnGUI ()
   {
-    if (GUI.Button (new Rect (100, 300, 150, 80), "Show Offerwall")) {
+    if (GUI.Button(new Rect(100, 300, 150, 80), "Show Offerwall")) {
       Debug.Log("Offerwall Ad");
         
       string title = "Test Title";
@@ -329,7 +344,7 @@ public class TnkUITest : MonoBehaviour {
   
   void OnGUI ()
   {
-    if (GUI.Button (new Rect (100, 300, 150, 80), "Popup Offerwall")) {
+    if (GUI.Button(new Rect(100, 300, 150, 80), "Popup Offerwall")) {
       Debug.Log("Offerwall Ad");
         
       string title = "Test Title";
@@ -359,43 +374,44 @@ using UnityEngine;
 using System.Collections;
 
 namespace TnkAd {
-    public class EventHandler : MonoBehaviour {
-		// publishing state 
-		public const int PUB_STAT_NO = 0; // not publishing yet
-		public const int PUB_STAT_YES = 1; // publising state
-		public const int PUB_STAT_TEST = 2; // testing state
+  public class EventHandler : MonoBehaviour {
+  
+    // publishing state 
+    public const int PUB_STAT_NO = 0; // not publishing yet
+    public const int PUB_STAT_YES = 1; // publising state
+    public const int PUB_STAT_TEST = 2; // testing state
 
-		// onClose(int type)
-		public const int CLOSE_SIMPLE = 0; // users simply closed ad view.
-		public const int CLOSE_CLICK = 1; // users clicked ad view.
-		public const int CLOSE_EXIT = 2; // users clicked exit app button.
+    // onClose(int type)
+    public const int CLOSE_SIMPLE = 0; // users simply closed ad view.
+    public const int CLOSE_CLICK = 1; // users clicked ad view.
+    public const int CLOSE_EXIT = 2; // users clicked exit app button.
 
-		// onFailure(int errCode)
-		public const int FAIL_NO_AD = -1;  // no ad available
-		public const int FAIL_NO_IMAGE = -2; // ad image not available
-		public const int FAIL_TIMEOUT = -3;  // ad not arrived in 5 secs.
-		public const int FAIL_CANCELED = -4; // ad frequency setting
-		public const int FAIL_NOT_PREPARED = -5; // prepare not invoked.
+    // onFailure(int errCode)
+    public const int FAIL_NO_AD = -1;  // no ad available
+    public const int FAIL_NO_IMAGE = -2; // ad image not available
+    public const int FAIL_TIMEOUT = -3;  // ad not arrived in 5 secs.
+    public const int FAIL_CANCELED = -4; // ad frequency setting
+    public const int FAIL_NOT_PREPARED = -5; // prepare not invoked.
 
-		public const int FAIL_SYSTEM = -9;
+    public const int FAIL_SYSTEM = -9;
 
-		// Set 'Handler Name' in Unity Inspector
-		public string handlerName;
+    // Set 'Handler Name' in Unity Inspector
+    public string handlerName;
         
-        // ... 
+    // ... 
 
-		// ServiceCallback methods
-		public virtual void onReturnQueryPoint(int point) {}
-		public virtual void onReturnWithdrawPoints(int point) {}
-		public virtual void onReturnPurchaseItem(long curPoint, long seqId) {}
-		public virtual void onReturnQueryPublishState(int state) {}
+    // ServiceCallback methods
+    public virtual void onReturnQueryPoint(int point) {}
+    public virtual void onReturnWithdrawPoints(int point) {}
+    public virtual void onReturnPurchaseItem(long curPoint, long seqId) {}
+    public virtual void onReturnQueryPublishState(int state) {}
 
-		// TnkAdListener methods
-		public virtual void onFailure(string error) { }
-        public virtual void onLoad() { }
-        public virtual void onShow() { }
-        public virtual void onClose(int type) { }
-    }
+    // TnkAdListener methods
+    public virtual void onFailure(int errCode) { }
+    public virtual void onLoad() { }
+    public virtual void onShow() { }
+    public virtual void onClose(int type) { }
+  }
 }
 ```
 
@@ -416,14 +432,14 @@ using System.Collections;
 
 public class MyTnkHandler : TnkAd.EventHandler {
 
-    public override void onReturnQueryPoint(int point) {
-        Debug.Log("##### onReturnQueryPoint " + point.ToString());
-    }
-    
-    public override void onReturnPurchaseItem(long curPoint, long seqId) {
-        Debug.Log("##### onReturnPurchaseItem point = " + curPoint.ToString());
-        Debug.Log("##### onReturnPurchaseItem seqId = " + seqId.ToString());
-    }
+  public override void onReturnQueryPoint(int point) {
+    Debug.Log("##### onReturnQueryPoint " + point.ToString());
+  }
+  
+  public override void onReturnPurchaseItem(long curPoint, long seqId) {
+    Debug.Log("##### onReturnPurchaseItem point = " + curPoint.ToString());
+    Debug.Log("##### onReturnPurchaseItem seqId = " + seqId.ToString());
+  }
 }
 ```
 
@@ -436,10 +452,11 @@ public class MyTnkHandler : TnkAd.EventHandler {
 > EventHandler 사용 예시
 
 ```c#
-if (GUI.Button (new Rect (100, 400, 150, 80), "Query point")) {
-      Debug.Log("Query point");
-      // be sure that put handler object named 'testhandler' in your scene. (It should be named in Unity Inspector)
-      TnkAd.Plugin.Instance.queryPoint("testhandler"); 
+if (GUI.Button(new Rect (100, 400, 150, 80), "Query point")) {
+    Debug.Log("Query point");
+    
+    // be sure that put handler object named 'testhandler' in your scene. (It should be named in Unity Inspector)
+    TnkAd.Plugin.Instance.queryPoint("testhandler"); 
 }
 ```
 
@@ -515,28 +532,30 @@ using System.Collections;
 
 public class TnkUITest : MonoBehaviour {
 
-    void Start ()
-    {
-    }
-    
-    void Update ()
-    {
-    }
-    
-    void OnGUI ()
-    {
-        if (GUI.Button (new Rect (100, 400, 150, 80), "Query point")) {
-            Debug.Log("Query point");
-            // be sure that put handler object named 'testhandler' in your scene. (It should be named in Unity Inspector)
-            TnkAd.Plugin.Instance.queryPoint("testhandler"); 
-        }
+  void Start ()
+  {
+  }
+  
+  void Update ()
+  {
+  }
+  
+  void OnGUI ()
+  {
+    if (GUI.Button(new Rect(100, 400, 150, 80), "Query point")) {
+      Debug.Log("Query point");
 
-        if (GUI.Button (new Rect (100, 500, 150, 80), "Purchase Item")) {
-            Debug.Log("Purchase Item");
-            // be sure that put handler object named 'testhandler' in your scene. (It should be named in Unity Inspector)
-            TnkAd.Plugin.Instance.purchaseItem(100, "item01", "testhandler"); 
-        }
+      // be sure that put handler object named 'testhandler' in your scene. (It should be named in Unity Inspector)
+      TnkAd.Plugin.Instance.queryPoint("testhandler"); 
     }
+
+    if (GUI.Button(new Rect(100, 500, 150, 80), "Purchase Item")) {
+      Debug.Log("Purchase Item");
+        
+      // be sure that put handler object named 'testhandler' in your scene. (It should be named in Unity Inspector)
+      TnkAd.Plugin.Instance.purchaseItem(100, "item01", "testhandler"); 
+    }
+  }
 }
 ```
 
@@ -566,12 +585,173 @@ using System.Collections;
 
 public class TnkUITest : MonoBehaviour {
 
-    void Start ()
-    {
-        TnkAd.Plugin.Instance.setUserName ("test_name");
-        TnkAd.Plugin.Instance.queryPublishState("testhandler"); 
-    }
-    // ...
+  void Start ()
+  {
+    TnkAd.Plugin.Instance.setUserName("test_name");
+    TnkAd.Plugin.Instance.queryPublishState("testhandler"); 
+  }
+  
+  // ...
 }
 ```
 
+## 3. Interstitial Ad
+
+전면 광고 적용을 위해서는 Tnk 사이트에서 앱 등록 Unity Plugin 관련 설정이 우선 선행되어야합니다.
+[[Unity Settings]](#1-unity-settings) 의 내용을 우선 확인해주세요.
+
+### Incentive Interstitial Ad
+
+보상형 전면 광고를 띄우는 것은 아래와 같이 간단히 2줄의 코딩만으로 가능합니다.
+
+```c#
+using UnityEngine;
+using System.Collections;
+
+public class TnkUITest : MonoBehaviour {
+
+  void Start ()
+  {
+  }
+  
+  void Update ()
+  {
+  }
+  
+  void OnGUI ()
+  {
+    if (GUI.Button(new Rect (100, 100, 150, 80), "Interstitial Ad")) {
+      Debug.Log("interstitial Ad");
+      
+      TnkAd.Plugin.Instance.prepareInterstitialAdForPPI();
+      TnkAd.Plugin.Instance.showInterstitialAd();
+    }
+  }
+}
+```
+
+### Interstitial Ad APIs
+
+전면 광고를 띄우기 위해서 사용하는 prepareInterstitialAdForPPI() 와 showInterstitialAdForPPI() 의 API 규약은 아래와 같습니다.
+
+#### TnkAd.Plugin - prepareInterstitialAdForPPI()
+
+##### Method
+
+- void prepareInterstitialAdForPPI()
+- void prepareInterstitialAdForPPI(string handleName)
+
+##### Description
+
+하나의 전면광고를 로딩합니다. 로딩된 전면광고는 이후 showInterstitialAdForPPI() API를 호출하여 화면에 띄울수 있습니다. EventHandler의 이름을 지정하면 전면광고관련 이벤트 발생시점에 EventHandler 객체의 메소드들이 호출됩니다.
+
+##### Parameters
+
+| 파라메터 명칭 | 내용                                                         |
+| ------------- | ------------------------------------------------------------ |
+| handlerName   | EventHandler 객체의 이름                                     |
+
+#### TnkAd.Plugin - showInterstitialAdForPPI()
+
+##### Method
+
+- void showInterstitialAdForPPI()
+- void showInterstitialAdForPPI(string handleName)
+
+##### Description
+
+prepareInterstitialAdForPPI()를 통하여 로딩된 전면광고를 화면에 띄웁니다.
+
+##### Parameters
+
+| 파라메터 명칭 | 내용                     |
+| ------------- | ------------------------ |
+| handlerName   | EventHandler 객체의 이름 |
+
+### EventHandler 이용하기
+
+전면광고의 로딩이 완료되거나 사용자가 전면광고 화면을 닫는 경우 해당 이벤트 발생시점에 필요한 로직을 구현하기 위해서는 EventHandler 객체를 생성해야합니다.
+EventHandler 클래스는 포인트 조회나 포인트 인출과 같이 비동기로 결과를 받아야 하는 경우 또는 중간 전면광고에서 발생하는 이벤트를 처리하기 위해서 제공되는 클래스입니다.
+EventHandler 에 대한 자세한 내용은 [[EventHandler]](#나-eventhandler) 를 참고하세요.
+
+
+
+전면 광고와 관련되어 EventHandler에서 발생하는 이벤트들은 아래와 같습니다.
+
+* onClose(int type) : 전면 화면이 닫히는 시점에 호출됩니다. 화면이 닫히는 이유가 type 파라메터로 전달됩니다.
+  * CLOSE_SIMPLE (0) : 사용자가 전면 화면의 닫기 버튼이나 Back 키를 눌러서 닫은 경우입니다.
+  * CLOSE_CLICK (1) : 사용자가 전면 화면의 광고를 클릭하여 해당 광고로 이동하는 경우 입니다.
+  * CLOSE_EXIT (2) : 전면 화면에 앱 종료버튼이 있는 경우 사용자가 앱 종료 버튼을 누른 경우입니다. 이 경우 앱을 종료하는 로직을 EventHandler에 구현해야합니다.
+* onFailure(int errCode) : 전면 광고를 가져오지 못한 경우 호출이 됩니다. 에러 코드가 errCode 파라메터로 전달됩니다.
+  * FAIL_NO_AD (-1) : 제공할 전면광고가 없을 경우입니다.
+  * FAIL_NO_IMAGE (-2) : 전면 광고를 가져왔으나 전면 이미지 정보가 없는 경우입니다.
+  * FAIL_TIIMEOUT (-3) : showInterstitialAdForPPI() 호출 후 5초 이내에 전면광고가 도착하지 않은 경우입니다. 이 경우에는 전면광고를 띄우지 않습니다.
+  * FAIL_CANCELED (-4) : prepareInterstitialAdForPPI() 호출하였으나 서버에서 설정한 광고 노출 주기를 지나지 않아 취소된 경우입니다.
+  * FAIL_NOT_PREPARED (-5) : prepareInterstitialAdForPPI()를 호출하지 않고 showInterstitialAdForPPI()를 호출한 경우입니다.
+  * FAIL_SYSTEM (-9) : 서버 또는 네트워크 오류가 발생한 경우입니다.
+* onLoad() : prepareInterstitialAdForPPI() 호출하여 전면광고를 성공적으로 가져온 경우 호출됩니다. 만약 전면광고가 도착하기 전에 showInterstitialAdForPPI() 가 호출되었다면 이후 전면광고 도착시 onLoad() 가 호출되지 않고 바로 전면광고가 보여지면서 onShow()가 호출됩니다.
+* onShow() : 전면광고가 화면에 나타날 때 호출됩니다.
+
+### Sample
+
+아래의 예시는 EventHandler를 사용하여 광고가 로딩되는 시점에 앱의 상태를 판단하여 광고를 띄울지 말지 결정하는 방식의 구현 예시입니다.
+
+> EventHandler Sample
+
+```c#
+using UnityEngine;
+using System.Collections;
+
+public class MyTnkHandler : TnkAd.EventHandler {
+
+  public bool isOkToShow = true;
+
+  public override void onClose(int type) {
+    Debug.Log ("##### TnkAd.Listener onClose " + type.ToString());
+  }
+  
+  public override void onFailure(int errCode) {
+    Debug.Log ("##### TnkAd.Listener onFailure " + errCode.ToString());
+  }
+  
+  public override void onLoad() {
+    Debug.Log ("##### TnkAd.Listener onLoad ");
+
+    if (isOkToShow) {
+      TnkAd.Plugin.Instance.showInterstitialAdForPPI("testhandler");
+    } else {
+      // not showing
+    }
+  }
+  
+  public override void onShow() {
+    Debug.Log ("##### TnkAd.Listener onShow ");
+  }
+}
+```
+
+```c#
+using UnityEngine;
+using System.Collections;
+
+public class TnkUITest : MonoBehaviour {
+
+  void Start ()
+  {
+  }
+  
+  void Update ()
+  {
+  }
+  
+  void OnGUI ()
+  {
+    if (GUI.Button (new Rect (100, 200, 150, 80), "Ad Listener")) {
+      Debug.Log("interstitial Ad for Listener");
+
+      // be sure that put handler object named 'testhandler' in your scene. (It should be named in Unity Inspector)
+      TnkAd.Plugin.Instance.prepareInterstitialAdForPPI("testhandler"); 
+    }
+  }
+}
+```
