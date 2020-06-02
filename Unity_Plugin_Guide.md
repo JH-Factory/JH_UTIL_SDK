@@ -259,29 +259,29 @@ using System.Collections;
 
 public class TnkUITest : MonoBehaviour {
 
-    void Start ()
-    {
-    }
-    
-    void Update ()
-    {
-    }
-    
-    void OnGUI ()
-    {
-        if (GUI.Button (new Rect (100, 300, 150, 80), "Show Offerwall")) {
-            Debug.Log("Offerwall Ad");
-            
-			string title = "Test Title";
+  void Start ()
+  {
+  }
+  
+  void Update ()
+  {
+  }
+  
+  void OnGUI ()
+  {
+    if (GUI.Button (new Rect (100, 300, 150, 80), "Show Offerwall")) {
+      Debug.Log("Offerwall Ad");
+        
+      string title = "Test Title";
 
-			//TnkAd.Plugin.Instance.showAdList();
-			//TnkAd.Plugin.Instance.showAdList(TnkAd.AdListType.PPI);
-			//TnkAd.Plugin.Instance.showAdList(title);
-			//TnkAd.Plugin.Instance.showAdList(title, TnkAd.AdListType.PPI);
-			//TnkAd.Plugin.Instance.showAdList(title, TnkAd.TemplateStyle.BLUE_01);
-			TnkAd.Plugin.Instance.showAdList(title, TnkAd.AdListType.PPI, TnkAd.TemplateStyle.RED_01);
-        }
+      //TnkAd.Plugin.Instance.showAdList();
+      //TnkAd.Plugin.Instance.showAdList(TnkAd.AdListType.PPI);
+      //TnkAd.Plugin.Instance.showAdList(title);
+      //TnkAd.Plugin.Instance.showAdList(title, TnkAd.AdListType.PPI);
+      //TnkAd.Plugin.Instance.showAdList(title, TnkAd.TemplateStyle.BLUE_01);
+      TnkAd.Plugin.Instance.showAdList(title, TnkAd.AdListType.PPI, TnkAd.TemplateStyle.RED_01);
     }
+  }
 }
 ```
 
@@ -319,31 +319,31 @@ using System.Collections;
 
 public class TnkUITest : MonoBehaviour {
 
-    void Start ()
-    {
-    }
-    
-    void Update ()
-    {
-    }
-    
-    void OnGUI ()
-    {
-        if (GUI.Button (new Rect (100, 300, 150, 80), "Popup Offerwall")) {
-            Debug.Log("Offerwall Ad");
-            
-			string title = "Test Title";
+  void Start ()
+  {
+  }
+  
+  void Update ()
+  {
+  }
+  
+  void OnGUI ()
+  {
+    if (GUI.Button (new Rect (100, 300, 150, 80), "Popup Offerwall")) {
+      Debug.Log("Offerwall Ad");
+        
+      string title = "Test Title";
 
-			//TnkAd.Plugin.Instance.popupAdList();
-			//TnkAd.Plugin.Instance.popupAdList(TnkAd.AdListType.CPS);
-			//TnkAd.Plugin.Instance.popupAdList(title);
-			//TnkAd.Plugin.Instance.popupAdList(title, TnkAd.AdListType.CPS);
-			//TnkAd.Plugin.Instance.popupAdList(title, "testhandler");
-			//TnkAd.Plugin.Instance.popupAdList(title, TnkAd.AdListType.CPS, "testhandler");
-			//TnkAd.Plugin.Instance.popupAdList(title, TnkAd.AdListType.CPS, TnkAd.TemplateStyle.RED_01);
-			TnkAd.Plugin.Instance.popupAdList(title, TnkAd.AdListType.CPS, "testhandler", TnkAd.TemplateStyle.RED_01);
-        }
+      //TnkAd.Plugin.Instance.popupAdList();
+      //TnkAd.Plugin.Instance.popupAdList(TnkAd.AdListType.CPS);
+      //TnkAd.Plugin.Instance.popupAdList(title);
+      //TnkAd.Plugin.Instance.popupAdList(title, TnkAd.AdListType.CPS);
+      //TnkAd.Plugin.Instance.popupAdList(title, "testhandler");
+      //TnkAd.Plugin.Instance.popupAdList(title, TnkAd.AdListType.CPS, "testhandler");
+      //TnkAd.Plugin.Instance.popupAdList(title, TnkAd.AdListType.CPS, TnkAd.TemplateStyle.RED_01);
+      TnkAd.Plugin.Instance.popupAdList(title, TnkAd.AdListType.CPS, "testhandler", TnkAd.TemplateStyle.RED_01);
     }
+  }
 }
 ```
 
