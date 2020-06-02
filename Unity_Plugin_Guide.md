@@ -7,13 +7,13 @@
    * [Plugin Import](#plugin-import)
    * [AdnroidMenifest.xml 설정](#adnroidmenifestxml-설정)
      * [Permission 설정](#permission-설정)
-     * [Tnk App ID 설정](#권한-설정)
+     * [Tnk App ID 설정](#tnk-app-id-설정)
      * [Offerwall Activity 설정](#offerwall-activity-설정)
      * [UnityPlayer](#unityplayer-설정)
 
 2. [Publisher API](#2-publisher-api)
 
-   1) [광고 목록 띄우기](#1-광고-목록-띄우기)
+   가. [광고 목록 띄우기](#1-광고-목록-띄우기)
 
    * [유저 식별 값 설정](#유저-식별-값-설정)
      * [Method](#method)
@@ -29,13 +29,13 @@
      * [Parameters](#parameters-2)
      * [적용 예시](#적용-예시-1)
 
-   2) [EventHandler](#2-eventhandler)
+   나. [EventHandler](#2-eventhandler)
 
    * [EventHandler 스크립트 만들기](#eventhandler-스크립트-만들기)
    * [GameObject에 추가하고 Handler Name 지정](#gameobject에-추가하고-handler-name-지정)
    * [설정한 Handler Name을 사용하여 Plugin API 호출](#설정한-handler-name을-사용하여-plugin-api-호출)
 
-   3) [포인트 조회 및 인출](#3-포인트-조회-및-인출)
+   다. [포인트 조회 및 인출](#3-포인트-조회-및-인출)
 
    * [TnkAd.Plugin - queryPoint()](#tnkadplugin---querypoint)
      * [Method](#method-3)
@@ -51,7 +51,7 @@
      * [Parameters](#parameters-5)
      * [포인트 조회 및 인출 기능 적용예시](#포인트-조회-및-인출-기능-적용예시)
 
-   4) [그밖의 기능들](#4-그밖의-기능들)
+   라. [그밖의 기능들](#4-그밖의-기능들)
 
    * [TnkAd.Plugin - queryPublishState()](#tnkadplugin---querypublishstate)
      * [Method](#method-6)
@@ -209,7 +209,7 @@ Unity 4.3 이상 버전을 사용하신다면 아래와 같이 ForwardNativeEven
 Unity용 Plugin 으로 TnkAd.Plugin 클래스와 TnkAd.EventHandler 클래스가 제공됩니다.
 Plugin 클래스는 광고목록이나 중간 전면광고 등의 TnkAd의 기능을 사용하기 위해서는 제공되는 클래스입니다. EventHandler 클래스는 API 중 비동기로 결과를 받아야 하는 경우에 사용되는 클래스입니다. 
 
-### 1) 광고 목록 띄우기
+### 가. 광고 목록 띄우기
 
 #### 유저 식별 값 설정
 
@@ -347,7 +347,7 @@ public class TnkUITest : MonoBehaviour {
 }
 ```
 
-### 2) EventHandler
+### 나. EventHandler
 
 EventHandler 클래스는 포인트 조회나 포인트 인출과 같이 비동기로 결과를 받아야 하는 경우 또는 중간 전면광고에서 발생하는 이벤트를 처리하기 위해서 제공되는 클래스입니다.
 EventHandler 클래스의 모습은 아래와 같습니다.
@@ -443,7 +443,7 @@ if (GUI.Button (new Rect (100, 400, 150, 80), "Query point")) {
 }
 ```
 
-### 3) 포인트 조회 및 인출
+### 다. 포인트 조회 및 인출
 
 사용자가 광고참여를 통하여 획득한 포인트는 Tnk서버에서 관리되거나 앱의 자체서버에서 관리될 수 있습니다.
 포인트가 Tnk 서버에서 관리되는 경우에만 아래의 포인트 조회 및 인출 API를 사용하시어 필요한 아이템 구매 기능을 구현하실 수 있습니다.
@@ -540,7 +540,7 @@ public class TnkUITest : MonoBehaviour {
 }
 ```
 
-### 4) 그밖의 기능들
+### 라. 그밖의 기능들
 
 #### TnkAd.Plugin - queryPublishState()
 
