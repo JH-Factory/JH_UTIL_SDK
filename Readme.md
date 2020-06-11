@@ -1,10 +1,12 @@
-# Tnkfactory SDK Rwd
+# Tnkfactory SDK Pub
 
-TnkAd SDK는 Tnk의 광고 네트워크 상에서 광고앱 이나 매체앱을 개발하기 위하여 제공되는 통합된 SDK이며 아래의 기능들을 사용하실 수 있습니다.
+Tnk Pub SDK는 아래의 기능들을 사용하실 수 있습니다.
 
-* 보상형/구매형 광고의 오퍼월(Offer-wall)
-* 보상형 전면광고(Interstitial Ad)
-* 분석도구(Analytics) 기능 제공으로 유입경로 별 앱사용율, 재방문율, 퍼널분석 등의 다양한 분석보고서 생성
+* 전면 광고(Interstitial Ad)
+* 배너 광고(Banner Ad)
+* 네이티브 광고(Native Ad)
+* 피드형 광고(Feed Ad)
+* 리워드 광고(Reward Ad)
 
 ## Android
 
@@ -14,8 +16,8 @@ TnkAd SDK는 Tnk의 광고 네트워크 상에서 광고앱 이나 매체앱을 
 
 ### Update Notice
 
-* 2020.06.03
-  * Android SDK v7.04.1 업데이트
+* 2020.05.12
+  * Android SDK v7.05.2 업데이트
 
 
 
@@ -27,8 +29,8 @@ TnkAd SDK는 Tnk의 광고 네트워크 상에서 광고앱 이나 매체앱을 
 
 ### Update Notice
 
-* 2020.06.03
-  * Android SDK v7.04.1 적용
+* 2020.06.12
+  * Android SDK v7.05.2 적용
 
 
 
