@@ -7,41 +7,39 @@
    * [Plugin Import](#plugin-import)
    * [AdnroidMenifest.xml 설정](#adnroidmenifestxml-설정)
      * [Permission 설정](#permission-설정)
-     * [Tnk App ID 설정](#tnk-app-id-설정)
-     * [Offerwall Activity 설정](#offerwall-activity-설정)
+     * [Tnk Pub ID 설정](#tnk-pub-id-설정)
      * [UnityPlayer](#unityplayer-설정)
    * [COPPA 설정](#coppa-설정)
-3. [Interstitial Ad](#3-interstitial-ad)
-   * [Incentive Interstitial Ad](#incentive-interstitial-ad)
+3. [Interstitial Ad](#2-interstitial-ad)
+   * [Interstitial Ad](#use-interstitial-ad)
+   * [Test Flight](#test-flight)
    * [Interstitial Ad APIs](#interstitial-ad-apis)
      * [TnkPub.Plugin - prepareInterstitialAd()](#tnkpubplugin---prepareinterstitialad)
-       * [Method](#method-7)
-       * [Description](#description-5)
-       * [Parameters](#parameters-7)
+       * [Method](#method)
+       * [Description](#description)
+       * [Parameters](#parameters)
      * [TnkPub.Plugin - showInterstitialAd()](#tnkpubplugin---showinterstitialad)
-       * [Method](#method-8)
-       * [Description](#description-6)
-       * [Parameters](#parameters-8)
+       * [Method](#method-1)
+       * [Description](#description-1)
+       * [Parameters](#parameters-1)
      * [EventHandler 이용하기](#eventhandler-이용하기)
      * [Sample](#sample)
-3. [Banner Ad]()
-
-   - [Use Banner Ad]
-   - [Test Flight]
-   - [Banner Ad APIs]
-     - [TnkPub.Plugin - showBannerAd()]
-       - [Method]
-       - [Description]
-       - [Parameters]
-     - [TnkPub.Plugin - removeBannerAd()]
-       - [Method]
-       - [Description]
-       - [Parameters]
-4. [EventHandler]
-
-   - [EventHandler 스크립트 만들기]
-   - [GameObject에 추가하고 Handler Name 지정]
-   - [설정한 Handler Name을 사용하여 Plugin API 호출]
+3. [Banner Ad](#3-banner-ad)
+- [Use Banner Ad](#use-banner-ad)
+   - [Test Flight](#test-flight-1)
+   - [Banner Ad APIs](#banner-ad-apis)
+     - [TnkPub.Plugin - showBannerAd()](#tnkpubplugin---showbannerad)
+       - [Method](#method-2)
+       - [Description](#description-2)
+       - [Parameters](#parameters-2)
+     - [TnkPub.Plugin - removeBannerAd()](#tnkpubplugin---removebannerad)
+       - [Method](#method-3)
+       - [Description](#description-3)
+       - [Parameters](#parameters-3)
+4. [EventHandler](#4-eventhandler)
+- [EventHandler 스크립트 만들기](#eventhandler-스크립트-만들기)
+   - [GameObject에 추가하고 Handler Name 지정](#gameobject에-추가하고-handler-name-지정)
+   - [설정한 Handler Name을 사용하여 Plugin API 호출](#설정한-handler-name을-사용하여-plugin-api-호출)
 
 ## 1. Unity Settings
 
@@ -232,7 +230,7 @@ public class TnkUITest : MonoBehaviour {
 
 아래의 PLACEMENT ID를 사용하시면 별도로 계정이나 앱을 등록하지 않아도 간단하게 테스트 광고를 띄워보실 수 있습니다.
 
-단, [[Tnk Pub ID 설정]](#tnk-app-id-설정)을 하지 않고 하셔야 광고가 나옵니다. 해당 설정을 진행하셨다면 아래 ID로 테스트 광고를 띄우기 위해서 주석 처리 또는 제거 후 진행해주세요.
+단, [[Tnk Pub ID 설정]](#tnk-pub-id-설정)을 하지 않고 하셔야 광고가 나옵니다. 해당 설정을 진행하셨다면 아래 ID로 테스트 광고를 띄우기 위해서 주석 처리 또는 제거 후 진행해주세요.
 
 - TEST_INTERSTITIAL_H : 전면 광고 가로
 - TEST_INTERSTITIAL_V : 전면 광고 세로
@@ -390,7 +388,7 @@ public class TnkUITest : MonoBehaviour {
 
 아래의 PLACEMENT ID를 사용하시면 별도로 계정이나 앱을 등록하지 않아도 간단하게 테스트 광고를 띄워보실 수 있습니다.
 
-단, [[Tnk Pub ID 설정]](#tnk-app-id-설정)을 하지 않고 하셔야 광고가 나옵니다. 해당 설정을 진행하셨다면 아래 ID로 테스트 광고를 띄우기 위해서 주석 처리 또는 제거 후 진행해주세요.
+단, [[Tnk Pub ID 설정]](#tnk-pub-id-설정)을 하지 않고 하셔야 광고가 나옵니다. 해당 설정을 진행하셨다면 아래 ID로 테스트 광고를 띄우기 위해서 주석 처리 또는 제거 후 진행해주세요.
 
 - TEST_BANNER_100 : 배너 광고 (640x100)
 - TEST_BANNER_200 : 배너 광고 (640x200)
