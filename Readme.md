@@ -12,7 +12,11 @@ Tnk Pub SDK는 아래의 기능들을 사용하실 수 있습니다.
 
 ### Android Guide
 
-[가이드 문서 바로가기](./Android_Guide.md)
+[안드로이드 적용 가이드](./Android_Guide.md)
+
+### Migration
+
+[구 SDK에서 마이그레이션 적용 가이드](./MIGRATION.md)
 
 ### Update Notice
 
@@ -25,7 +29,7 @@ Tnk Pub SDK는 아래의 기능들을 사용하실 수 있습니다.
 
 ### Unity Plugin Guide
 
-[가이드 문서 바로가기](./Unity_Plugin_Guide.md)
+[유니티 플러그인 적용 가이드](./Unity_Plugin_Guide.md)
 
 ### Update Notice
 
