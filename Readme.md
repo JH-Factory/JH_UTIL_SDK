@@ -16,7 +16,7 @@ Tnk Pub SDK는 아래의 기능들을 사용하실 수 있습니다.
 
 ### Migration
 
-[구 SDK에서 마이그레이션 적용 가이드](./MIGRATION.md)
+[구 SDK에서 마이그레이션 적용 가이드](./Migration.md)
 
 ### Update Notice
 
